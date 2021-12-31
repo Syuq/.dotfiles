@@ -1,0 +1,27 @@
+# !/bin/sh
+
+# This file runs when a DM logs you into a graphical session.
+# If you use startx/xinit like a Chad, this file will also be sourced.
+
+# xrandr --dpi 96		# Set DPI. User may want to use a larger number for larger screens.
+setbg &			# set the background with the `setbg` script
+
+run() { command -v ${1} > /dev/null && ${@}; }
+
+# run xset r rate 300 50          # speed xrate up
+# run numlockx                    # turn on numlock key
+# run nm-applet &                 # networkmanager applet
+# run blueman-applet &            # bluetooth applet
+run picom -b                    # for transparency
+run dunst &                     # notification server
+# run ibus-daemon -drx            # start ibus daemon
+# run udiskie -s &                # auto mount USB
+
+#autostart="mpd xcompmgr dunst unclutter pipewire"
+
+#for program in $autostart; do
+#	pidof -s "$program" || setsid -f "$program"
+#done >/dev/null 2>&1
+
+# # Ensure that xrdb has finished running before moving on to start the WM/DE.
+# [ -n "$xrdbpid" ] && wait "$xrdbpid"

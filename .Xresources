@@ -1,0 +1,61 @@
+Xft.dpi:       96
+Xft.antialias: true
+Xft.hinting:   true
+Xft.rgba:      rgb
+Xft.autohint:  false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+! window padding
+/* st.borderpx: 12 */
+
+*background:                      #282a36	
+*foreground:                      #f8f8f2	
+*fading:                          8
+*fadeColor:                       black
+*cursorColor:                     #8be9fd	
+*pointerColorBackground:          #2B2C2B
+*pointerColorForeground:          #16A085
+
+!! Transparency (0-1):
+st.alpha: 0.9
+st.alphaOffset: 0.3
+st.font: JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
+
+! terminal padding color
+*borderColor: #24283b
+
+!! black dark/light
+*color0:                          #000000
+*color8:                          #4D4D4D
+
+!! red dark/light
+*color1:                          #ff5555	
+*color9:                          #FF6E67
+
+!! green dark/light
+*color2:                          #50fa7b	
+*color10:                         #5AF78E
+
+!! yellow dark/light
+*color3:                          #f1fa8c	
+*color11:                         #F4F99D
+
+!! blue dark/light
+*color4:                          #42A5F5
+*color12:                         #42cbf5
+
+!! magenta dark/light
+*color5:                          #FF79C6
+*color13:                         #FF92D0
+
+!! cyan dark/light
+*color6:                          #8be9fd	
+*color14:                         #9AEDFE
+
+!! white dark/light
+*color7:                          #BFBFBF
+*color15:                         #E6E6E6
+
+Xcursor.theme: xcursor-breeze
+Xcursor.size:                     0
