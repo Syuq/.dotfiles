@@ -1,0 +1,61 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# Replace the "" symbol in the prompt with ▶"➜"
+[character]                            # The name of the module we are configuring is "character"
+success_symbol = "[▶ ](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[✗ ](bold red) "
+vicmd_symbol = "[ ](bold green) "
+
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = "  [$user]($style) "
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = true
+format =  "[$hostname](bold blue) "
+trim_at = ".companyname.com"
+disabled = false
+
+[package]
+format = "via [📦 $version](208 bold) "
+
+[git_branch]
+symbol = " "
+truncation_length = 4
+truncation_symbol = ""
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = " "
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[ PICKING](bold red)"
+
+[git_metrics]
+added_style = "bold blue"
+format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+
+[git_status]
+conflicted = "🏳 "
+ahead = " "
+behind = "😰"
+diverged = " "
+up_to_date = ""
+untracked = "?"
+stashed = " "
+modified = "!"
+staged = '[++\($count\)](green)'
+renamed = "» "
+deleted = "🗑 "
+
+[time]
+disabled = false
+format = '[\[$time\]]($style) '
+time_format = "%T"
+utc_time_offset = "+7"
+time_range = "22:30:00-07:00:00"
