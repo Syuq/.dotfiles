@@ -70,7 +70,7 @@ alias glog='git log --graph --oneline --decorate --all'
 
 alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
 
-alias config='/usr/bin/git --git-dir=$HOME/Dotfiles/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 #zsh syntax highlighting dracula 
 source /home/tat/.oh-my-zsh/custom/themes/dracu-syntax-highlighting.zsh 
