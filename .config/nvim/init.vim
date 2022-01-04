@@ -1,7 +1,7 @@
 "  ________       ______       _________                   
 " |_____  |      /  __  \      |   _____|  Technical Architet T         
 "      |  |     /  /  \  \     |  |               
-"      |  |    /  /    \  \    |  |        https://github.com/Syuq/dotfiles     
+"      |  |    /  /    \  \    |  |        https://github.com/Syuq/.dotfiles     
 "      |  |   /  /      \  \   |  |
 "      |  |  /  /        \  \  |  |                         
 "      |__| /__/          \__\ |__|         
@@ -84,8 +84,8 @@ set relativenumber
 set number
 set numberwidth=5
 " hi CursorLineNr guifg=#af00af
-set cursorline
-set cursorlineopt=number
+" set cursorline
+" set cursorlineopt=number
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow

@@ -57,6 +57,7 @@ export ANDROID_HOME=/opt/android-sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+export JAVA_HOME="$(dirname $(dirname $(realpath $(which javac))))"
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 
 # Start graphical server on tty1 if not already running.
