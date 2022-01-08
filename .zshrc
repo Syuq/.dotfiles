@@ -16,6 +16,8 @@ cal -3
 # Path to your oh-my-zsh installation.
 export ZSH="/home/tat/.oh-my-zsh"
 
+ZSH_THEME="dracula"
+DRACULA_DISPLAY_CONTEXT=1
 # export KEYTIMEOUT=1
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
@@ -75,5 +77,5 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #zsh syntax highlighting dracula 
 source /home/tat/.oh-my-zsh/custom/themes/dracu-syntax-highlighting.zsh 
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 eval $(thefuck --alias)
