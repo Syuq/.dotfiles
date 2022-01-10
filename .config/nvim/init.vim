@@ -70,8 +70,8 @@ set shiftround
 set expandtab
 
 " Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
+" set textwidth=80
+" set colorcolumn=+1
 
 " Display extra whitespace
 " set list listchars=tab:»·,trail:·,nbsp:·
