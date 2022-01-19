@@ -29,14 +29,14 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'unblevable/quick-scope'
 Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 " Plug 'tpope/vim-sensible'
 "Plug 'preservim/nerdcommenter'
 "Plug 'ervandew/supertab'
 "Plug 'windwp/nvim-autopairs'
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 " Plug 'editorconfig/editorconfig-vim'
-" Plug 'alvan/vim-closetag'
+Plug 'alvan/vim-closetag'
 " Plug 'dart-lang/dart-vim-plugin'
 Plug 'mhinz/vim-startify'
 
@@ -404,6 +404,11 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+" Auto close tag
+let g:closetag_filenames = '*.html,*.js,*.jsx,*.vue'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:jsx_ext_required = 0
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()

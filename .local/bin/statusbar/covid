@@ -26,7 +26,7 @@ output="🥵 ${confirmed}(+${inc_confirmed}),💀 $deaths(+${inc_deaths}),🤣 $
 # If ${confirmed} is empty, print out covid.log
 [ -z "${confirmed}" ] && cat ~/Templates/covid.log 2&> /dev/null && exit
 
-printf "${output}" > ~/Public/covid.log
+printf "${output}" > ~/Templates/covid.log
 printf "${output}"
 
 exit 0
