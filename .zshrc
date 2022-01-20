@@ -63,7 +63,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#000000,bold"
 alias webcam="mpv --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)"
 alias ls='ls --color=auto'
 alias ll="exa --icons --git -la"
-alias tree="exa --icons --tree"
+# alias tree="exa --icons --tree"
 #alias ping="prettyping"
 alias ip="ip -color=auto"
 alias grep="grep --color=auto"

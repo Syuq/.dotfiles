@@ -3,7 +3,7 @@
 # Prints the current volume or 🔇 if muted.
 
 case $BLOCK_BUTTON in
-	1) setsid -f "$TERMINAL" -e alsamixer ;;
+	1) setsid -f "$TERMINAL" -e pulsemixer ;;
 	2) pamixer -t ;;
 	4) pamixer --allow-boost -i 1 ;;
 	5) pamixer --allow-boost -d 1 ;;
@@ -18,13 +18,13 @@ esac
 vol="$(pamixer --get-volume)"
 
 if [ "$vol" -gt "70" ]; then
-	icon=" "
+	icon="🔊"
 elif [ "$vol" -gt "30" ]; then
-	icon="墳"
+	icon="🔉"
 elif [ "$vol" -gt "0" ]; then
-	icon="奔"
+	icon="🔈"
 else
-        echo 婢 && exit
+        echo 🔇 && exit
 fi
 
 echo "$icon$vol%"

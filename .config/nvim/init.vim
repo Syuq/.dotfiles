@@ -333,11 +333,6 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" Auto close tag
-" let g:closetag_filenames = '*.html,*.js,*.jsx,*.vue'
-" let g:closetag_emptyTags_caseSensitive = 1
-" let g:jsx_ext_required = 0
-
 " Quick Scope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
@@ -409,6 +404,13 @@ EOF
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.vue'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:jsx_ext_required = 0
+
+" Emmet
+let g:user_emmet_mode='n'    "only enable normal mode functions.
+let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+let g:user_emmet_mode='a'    "enable all function in all mode.
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()
