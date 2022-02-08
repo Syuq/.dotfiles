@@ -45,6 +45,7 @@ case "$currency" in
 	gbp) symb="£" ;;
 	eur) symb="€" ;;
 	btc) symb="₿" ;;
+	# ada) symb="" ;;
 esac
 
 printf "$3$symb%0.2f$after" "$(cat "$pricefile")"
