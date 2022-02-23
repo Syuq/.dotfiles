@@ -1,3 +1,11 @@
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+GREEN='\033[1;32m'
+YELLOW='\033[1;30m'
+BLUE='\033[0;33m'
+NC='\033[0m' # No Color
+
 function ordinal () {
   case "$1" in
     *1[0-9] | *[04-9]) echo "$1"th;;
@@ -7,9 +15,11 @@ function ordinal () {
   esac
 }
 
-echo "$(ordinal $(date +%j)) day"
+echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
 
 cal -3
+echo "${normal}🌴"
+echo "${Blue}${bold}$(sb-clock)"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
