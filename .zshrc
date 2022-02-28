@@ -19,6 +19,7 @@ echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
 
 cal -3
 echo "${normal}🌴"
+# echo ${(%):-'%F{yellow}%B%b%f'}
 echo "${Blue}${bold}$(sb-clock)"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -69,6 +70,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#000000,bold"
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 alias webcam="mpv --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)"
 alias ls='ls --color=auto'
