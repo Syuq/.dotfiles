@@ -28,6 +28,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'unblevable/quick-scope'
 Plug 'honza/vim-snippets'
+Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
 " Plug 'tpope/vim-sensible'
@@ -395,6 +396,11 @@ require'nvim-treesitter.configs'.setup {
     "bash",
     "java",
     "c",
+    "c_sharp",
+    "javascript",
+    "php",
+    "css",
+    "html",
     "cpp",
   },
 }
