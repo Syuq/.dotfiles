@@ -11,9 +11,10 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Define bundles via Github repos
 Plug 'vimwiki/vimwiki'
+Plug 'neovim/nvim-lspconfig'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
@@ -30,6 +31,8 @@ Plug 'unblevable/quick-scope'
 Plug 'honza/vim-snippets'
 Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+Plug 'OmniSharp/omnisharp-vim'
 Plug 'mattn/emmet-vim'
 " Plug 'tpope/vim-sensible'
 "Plug 'preservim/nerdcommenter'
@@ -39,6 +42,10 @@ Plug 'sheerun/vim-polyglot'
 " Plug 'editorconfig/editorconfig-vim'
 Plug 'alvan/vim-closetag'
 " Plug 'dart-lang/dart-vim-plugin'
+Plug 'groenewege/vim-less', { 'for': 'less' }
+Plug 'windwp/nvim-autopairs'
+Plug 'windwp/nvim-ts-autotag'
+
 Plug 'mhinz/vim-startify'
 
 call plug#end()
@@ -417,6 +424,20 @@ let g:user_emmet_mode='inv'  "enable all functions, which is equal to
 let g:user_emmet_mode='a'    "enable all function in all mode.
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+" Supprot for different goto definitions for different file types.
+autocmd FileType cs nmap <silent> gd :OmniSharpGotoDefinition<CR>
+autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+autocmd FileType cs nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+
+let g:ale_linters_ignore = {
+      \   'typescript': ['tslint'],
+      \}
+
+let g:ale_linters = {
+\ 'cs': ['OmniSharp']
+\}
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()
