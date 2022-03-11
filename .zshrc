@@ -70,6 +70,7 @@ plugins=(
          vi-mode
          zsh-autosuggestions
          zsh-syntax-highlighting
+         history-substring-search
          fzf
          autojump
          copydir
@@ -94,6 +95,31 @@ alias glog='git log --graph --oneline --decorate --all'
 alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+
+# Call `nvm use` automatically in a directory with a `.nvmrc` file
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if nvm -v &> /dev/null; then
+    local node_version="$(nvm version)"
+    local nvmrc_path="$(nvm_find_nvmrc)"
+
+    if [ -n "$nvmrc_path" ]; then
+      local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+      if [ "$nvmrc_node_version" = "N/A" ]; then
+        nvm install
+      elif [ "$nvmrc_node_version" != "$node_version" ]; then
+        nvm use --silent
+      fi
+    elif [ "$node_version" != "$(nvm version default)" ]; then
+      nvm use default --silent
+    fi
+  fi
+}
+type -a nvm > /dev/null && add-zsh-hook chpwd load-nvmrc
+type -a nvm > /dev/null && load-nvmrc
+
 
 #zsh syntax highlighting dracula 
 source /home/tat/.oh-my-zsh/custom/themes/dracu-syntax-highlighting.zsh 
