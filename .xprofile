@@ -12,7 +12,7 @@ run() { command -v ${1} > /dev/null && ${@}; }
 # run numlockx                    # turn on numlock key
 # run nm-applet &                 # networkmanager applet
 # run blueman-applet &            # bluetooth applet
-# run picom -b                    # for transparency
+run picom -b                    # for transparency
 run dunst &                     # notification server
 # run ibus-daemon -drx            # start ibus daemon
 # run udiskie -s &                # auto mount USB
