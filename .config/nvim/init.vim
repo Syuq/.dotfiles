@@ -53,6 +53,7 @@ call plug#end()
 " Leader
 let mapleader = " "
 
+set guifont=JetBrainsMono\ Nerd\ Font:h9
 set encoding=UTF-8
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -417,6 +418,12 @@ EOF
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.vue'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:jsx_ext_required = 0
+
+" Neovide
+let g:neovide_cursor_vfx_mode = "railgun"
+let g:neovide_input_use_logo=v:true
+let g:neovide_cursor_antialiasing=v:true
+" let g:neovide_fullscreen=v:true
 
 " Emmet
 let g:user_emmet_mode='n'    "only enable normal mode functions.
