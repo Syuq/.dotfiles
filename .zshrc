@@ -104,6 +104,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pacman-contrib='pacman -Ql pacman pacman-contrib | grep -E 'bin/.+''
 alias pacfzf='pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse'
 alias neovide='neovide --nofork'
+alias bc='bc -l ~/.bcrc'
 # alias pacsize="LC_ALL=C pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h"
 
 # Call `nvm use` automatically in a directory with a `.nvmrc` file
