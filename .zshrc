@@ -143,3 +143,5 @@ eval $(thefuck --alias)
 export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. ~/.oh-my-zsh/custom/plugins/z/z.sh
