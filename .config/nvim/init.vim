@@ -354,6 +354,15 @@ noremap gV `[v`]
 nnoremap <CR> G
 nnoremap <BS> gg
 
+" system clipboard
+nmap <a-c> "+y
+vmap <a-c> "+y
+nmap <a-v> "+p
+inoremap <a-v> <c-r>+
+cnoremap <a-v> <c-r>+
+" use <c-r> to insert original character without triggering things like auto-pairs
+inoremap <c-r> <c-v>
+
 " Auto pair
 "let g:AutoPairsFlyMode = 1
 "let g:AutoPairsShortcutBackInsert = '<M-b>'
