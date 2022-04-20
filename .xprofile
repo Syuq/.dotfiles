@@ -25,5 +25,6 @@ run greenclip daemon &          # run clipboard server daemon
 #	pidof -s "$program" || setsid -f "$program"
 #done >/dev/null 2>&1
 
+# brightness.sh = eDP1 0.9 --temp
 # # Ensure that xrdb has finished running before moving on to start the WM/DE.
 # [ -n "$xrdbpid" ] && wait "$xrdbpid"

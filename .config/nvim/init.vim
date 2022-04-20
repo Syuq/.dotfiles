@@ -25,13 +25,16 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'unblevable/quick-scope'
 Plug 'honza/vim-snippets'
 Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'mattn/emmet-vim'
 " Plug 'tpope/vim-sensible'
@@ -54,6 +57,7 @@ call plug#end()
 let mapleader = " "
 
 set guifont=JetBrainsMono\ Nerd\ Font:h9
+" set guifont=JoyPixels:h9
 set encoding=UTF-8
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -92,9 +96,9 @@ set nojoinspaces
 set relativenumber
 set number
 set numberwidth=5
-" hi CursorLineNr guifg=#af00af
-" set cursorline
-" set cursorlineopt=number
+hi CursorLineNr guifg=#af00af
+set cursorline
+set cursorlineopt=number
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -122,8 +126,20 @@ set foldmethod=manual
 
 " set background=dark
 
-colorscheme dracula
+" Example config in VimScript
+let g:tokyonight_style = "storm"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
 
+" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:tokyonight_colors = {
+  \ 'hint': 'orange',
+  \ 'error': '#ff0000'
+\ }
+
+" Load the colorscheme
+colorscheme tokyonight
+ " colorscheme dracula
 " Auto indenting
 " filetype plugin indent on
 
@@ -211,6 +227,13 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
+let g:coc_status_error_sign = ' '
+let g:coc_status_warning_sign = ' '
+
+" hi! CocErrorSign guifg=#d1666a
+hi! CocErrorSign guifg=#ff5555
+hi! CocInfoSign guibg=#353b45
+hi! CocWarningSign guifg=#d1cd66
 " coc.vim config
 " Remap keys for gotos
 " GoTo code navigation.
@@ -308,12 +331,12 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Search n-chars
 map / <Plug>(easymotion-sn)
 
-" Lightline
+" Lightline 
 let g:lightline = {
-      \ 'colorscheme': 'darcula',
+      \ 'colorscheme': 'tokyonight',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ],
+      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified', 'coc_error', 'coc_warning', 'coc_hint', 'coc_info' ] ],
       \   'right': [ [ 'lineinfo', 'percent' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
@@ -323,6 +346,13 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head',
       \   'cocstatus': 'coc#status'
       \ },
+\ 'component_expand': {
+  \   'coc_error'        : 'LightlineCocErrors',
+  \   'coc_warning'      : 'LightlineCocWarnings',
+  \   'coc_info'         : 'LightlineCocInfos',
+  \   'coc_hint'         : 'LightlineCocHints',
+  \   'coc_fix'          : 'LightlineCocFixes',
+  \ },
       \ }
 
 " fzf.vim
@@ -344,8 +374,8 @@ let g:fzf_colors =
 
 " Quick Scope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+highlight QuickScopePrimary guifg='#afff5f' ctermfg=155
+highlight QuickScopeSecondary guifg='#5fffff' ctermfg=81
 
 " Copy and paste to system clipboard with <Leader>p and <Leader>y
 vmap <Leader>y "+y
@@ -447,6 +477,8 @@ autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
 autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
 autocmd FileType cs nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
 
+let g:ale_sign_error = ' '
+let g:ale_sign_warning = ' '
 let g:ale_linters_ignore = {
       \   'typescript': ['tslint'],
       \}
@@ -454,6 +486,7 @@ let g:ale_linters_ignore = {
 let g:ale_linters = {
 \ 'cs': ['OmniSharp']
 \}
+highlight ALEWarning ctermbg=DarkMagenta
 
 " vp doesn't replace paste buffer
 function! RestoreRegister()
@@ -465,3 +498,45 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+
+" let g:lightline.component_type = {
+" \   'coc_error'        : 'error',
+" \   'coc_warning'      : 'warning',
+" \   'coc_info'         : 'tabsel',
+" \   'coc_hint'         : 'middle',
+" \   'coc_fix'          : 'middle',
+" \ }
+
+" function! s:lightline_coc_diagnostic(kind, sign) abort
+"   let info = get(b:, 'coc_diagnostic_info', 0)
+"   if empty(info) || get(info, a:kind, 0) == 0
+"     return ''
+"   endif
+"   try
+"     let s = g:coc_user_config['diagnostic'][a:sign . 'Sign']
+"   catch
+"     let s = ''
+"   endtry
+"   return printf('%s %d', s, info[a:kind])
+" endfunction
+
+" function! LightlineCocErrors() abort
+"   return s:lightline_coc_diagnostic('error', 'error')
+" endfunction
+
+" function! LightlineCocWarnings() abort
+"   return s:lightline_coc_diagnostic('warning', 'warning')
+" endfunction
+
+" function! LightlineCocInfos() abort
+"   return s:lightline_coc_diagnostic('information', 'info')
+" endfunction
+
+" function! LightlineCocHints() abort
+"   return s:lightline_coc_diagnostic('hints', 'hint')
+" endfunction
+" \ }
+
+" autocmd User CocDiagnosticChange call lightline#update()
+
