@@ -29,7 +29,8 @@ Xft.lcdfilter: lcddefault
 !! Transparency (0-1):
 st.alpha: 0.9
 st.alphaOffset: 0.3
-st.font: JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
+*.font: JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
+/* st.font: Monoid Nerd Font:pixelsize=12:antialias=true:autohint=true; */
 
 ! terminal padding color
 *borderColor: #24283b

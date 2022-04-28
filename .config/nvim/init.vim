@@ -48,6 +48,10 @@ Plug 'alvan/vim-closetag'
 Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
+Plug 'lukas-reineke/indent-blankline.nvim'"
+" Lua
+Plug 'nvim-lua/plenary.nvim'
+Plug 'sindrets/diffview.nvim'
 
 Plug 'mhinz/vim-startify'
 
@@ -100,6 +104,8 @@ hi CursorLineNr guifg=#af00af
 set cursorline
 set cursorlineopt=number
 
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
@@ -127,19 +133,19 @@ set foldmethod=manual
 " set background=dark
 
 " Example config in VimScript
-let g:tokyonight_style = "storm"
-let g:tokyonight_italic_functions = 1
-let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+" let g:tokyonight_style = "storm"
+" let g:tokyonight_italic_functions = 1
+" let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
 
-" Change the "hint" color to the "orange" color, and make the "error" color bright red
-let g:tokyonight_colors = {
-  \ 'hint': 'orange',
-  \ 'error': '#ff0000'
-\ }
+" " Change the "hint" color to the "orange" color, and make the "error" color bright red
+" let g:tokyonight_colors = {
+"   \ 'hint': 'orange',
+"   \ 'error': '#ff0000'
+" \ }
 
 " Load the colorscheme
-colorscheme tokyonight
- " colorscheme dracula
+" colorscheme tokyonight
+ colorscheme nord
 " Auto indenting
 " filetype plugin indent on
 
@@ -333,7 +339,7 @@ map / <Plug>(easymotion-sn)
 
 " Lightline 
 let g:lightline = {
-      \ 'colorscheme': 'tokyonight',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified', 'coc_error', 'coc_warning', 'coc_hint', 'coc_info' ] ],
@@ -430,6 +436,17 @@ map <Leader>rnf :call RenameFile()<cr>
 "cmap w!! %!sudo tee > /dev/null %
 
 lua <<EOF
+-- indent-blankline
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+--vim.opt.listchars:append("eol:↴")
+
+require("indent_blankline").setup {
+    space_char_blankline = " ",
+    show_current_context = true,
+    --show_current_context_start = true,
+}
+
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -457,6 +474,7 @@ EOF
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.vue'
 let g:closetag_emptyTags_caseSensitive = 1
 let g:jsx_ext_required = 0
+
 
 " Neovide
 let g:neovide_cursor_vfx_mode = "railgun"
@@ -500,43 +518,43 @@ endfunction
 vmap <silent> <expr> p <sid>Repl()
 
 
-" let g:lightline.component_type = {
-" \   'coc_error'        : 'error',
-" \   'coc_warning'      : 'warning',
-" \   'coc_info'         : 'tabsel',
-" \   'coc_hint'         : 'middle',
-" \   'coc_fix'          : 'middle',
-" \ }
+let g:lightline.component_type = {
+\   'coc_error'        : 'error',
+\   'coc_warning'      : 'warning',
+\   'coc_info'         : 'tabsel',
+\   'coc_hint'         : 'middle',
+\   'coc_fix'          : 'middle',
+\ }
 
-" function! s:lightline_coc_diagnostic(kind, sign) abort
-"   let info = get(b:, 'coc_diagnostic_info', 0)
-"   if empty(info) || get(info, a:kind, 0) == 0
-"     return ''
-"   endif
-"   try
-"     let s = g:coc_user_config['diagnostic'][a:sign . 'Sign']
-"   catch
-"     let s = ''
-"   endtry
-"   return printf('%s %d', s, info[a:kind])
-" endfunction
+function! s:lightline_coc_diagnostic(kind, sign) abort
+  let info = get(b:, 'coc_diagnostic_info', 0)
+  if empty(info) || get(info, a:kind, 0) == 0
+    return ''
+  endif
+  try
+    let s = g:coc_user_config['diagnostic'][a:sign . 'Sign']
+  catch
+    let s = ''
+  endtry
+  return printf('%s %d', s, info[a:kind])
+endfunction
 
-" function! LightlineCocErrors() abort
-"   return s:lightline_coc_diagnostic('error', 'error')
-" endfunction
+function! LightlineCocErrors() abort
+  return s:lightline_coc_diagnostic('error', 'error')
+endfunction
 
-" function! LightlineCocWarnings() abort
-"   return s:lightline_coc_diagnostic('warning', 'warning')
-" endfunction
+function! LightlineCocWarnings() abort
+  return s:lightline_coc_diagnostic('warning', 'warning')
+endfunction
 
-" function! LightlineCocInfos() abort
-"   return s:lightline_coc_diagnostic('information', 'info')
-" endfunction
+function! LightlineCocInfos() abort
+  return s:lightline_coc_diagnostic('information', 'info')
+endfunction
 
-" function! LightlineCocHints() abort
-"   return s:lightline_coc_diagnostic('hints', 'hint')
-" endfunction
-" \ }
+function! LightlineCocHints() abort
+  return s:lightline_coc_diagnostic('hints', 'hint')
+endfunction
+\ }
 
-" autocmd User CocDiagnosticChange call lightline#update()
+autocmd User CocDiagnosticChange call lightline#update()
 
