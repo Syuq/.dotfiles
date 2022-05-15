@@ -40,18 +40,18 @@ Plug 'mattn/emmet-vim'
 " Plug 'tpope/vim-sensible'
 "Plug 'preservim/nerdcommenter'
 "Plug 'ervandew/supertab'
-Plug 'windwp/nvim-autopairs'
+" Plug 'windwp/nvim-autopairs'
 Plug 'sheerun/vim-polyglot'
 " Plug 'editorconfig/editorconfig-vim'
 Plug 'alvan/vim-closetag'
 " Plug 'dart-lang/dart-vim-plugin'
 Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'windwp/nvim-autopairs'
-Plug 'windwp/nvim-ts-autotag'
-Plug 'lukas-reineke/indent-blankline.nvim'"
+" Plug 'windwp/nvim-ts-autotag'
+" Plug 'lukas-reineke/indent-blankline.nvim'"
 " Lua
-Plug 'nvim-lua/plenary.nvim'
-Plug 'sindrets/diffview.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'sindrets/diffview.nvim'
 
 Plug 'mhinz/vim-startify'
 
@@ -86,9 +86,9 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
-" Make it obvious where 80 characters is
-" set textwidth=80
-" set colorcolumn=+1
+" Make it obvious where 90 characters is
+set textwidth=90
+set colorcolumn=+1
 
 " Display extra whitespace
 " set list listchars=tab:»·,trail:·,nbsp:·
@@ -436,17 +436,6 @@ map <Leader>rnf :call RenameFile()<cr>
 "cmap w!! %!sudo tee > /dev/null %
 
 lua <<EOF
--- indent-blankline
-vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
---vim.opt.listchars:append("eol:↴")
-
-require("indent_blankline").setup {
-    space_char_blankline = " ",
-    show_current_context = true,
-    --show_current_context_start = true,
-}
-
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
