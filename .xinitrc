@@ -37,7 +37,9 @@ fi
 # load $XDG_CONFIG_HOME/X11/xprofile file if it exists; otherwise, load ~/.xprofile
 [ -f "$XDG_CONFIG_HOME"/X11/xprofile ] && source "$XDG_CONFIG_HOME"/X11/xprofile || source ~/.xprofile
 
-setxkbmap -option caps:escape
+# setxkbmap -option caps:escape
+# Make Caps Lock an additional Esc and both Shift Keys toggle Caps Lock
+setxkbmap -option caps:escape,shift:both_capslock &
 
 # start dwm
 exec dwm
