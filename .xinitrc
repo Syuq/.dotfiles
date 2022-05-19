@@ -37,5 +37,7 @@ fi
 # load $XDG_CONFIG_HOME/X11/xprofile file if it exists; otherwise, load ~/.xprofile
 [ -f "$XDG_CONFIG_HOME"/X11/xprofile ] && source "$XDG_CONFIG_HOME"/X11/xprofile || source ~/.xprofile
 
+setxkbmap -option caps:escape
+
 # start dwm
 exec dwm
