@@ -12,7 +12,7 @@ export BROWSER=/usr/bin/brave
 export DIFFPROG="nvim -d"
 export VISUAL=/usr/bin/nvim
 export PAGER="less"
-export BAT_THEME="Nord"
+export BAT_THEME="Dracula"
 # export LESS='-iMRS -x2'
 export LESS='-R --use-color -Dd+r$Du+b'
 
