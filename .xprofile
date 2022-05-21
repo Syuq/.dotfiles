@@ -21,6 +21,8 @@ run greenclip daemon &          # run clipboard server daemon
 
 #autostart="mpd xcompmgr dunst unclutter pipewire"
 
+setxkbmap -option caps:escape,shift:both_capslock &
+
 #for program in $autostart; do
 #	pidof -s "$program" || setsid -f "$program"
 #done >/dev/null 2>&1
