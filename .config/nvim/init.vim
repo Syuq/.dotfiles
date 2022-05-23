@@ -1,15 +1,19 @@
-"  ________       ______       _________                   
-" |_____  |      /  __  \      |   _____|  Technical Architet T         
-"      |  |     /  /  \  \     |  |               
-"      |  |    /  /    \  \    |  |        https://github.com/Syuq/.dotfiles     
-"      |  |   /  /      \  \   |  |
-"      |  |  /  /        \  \  |  |                         
-"      |__| /__/          \__\ |__|         
-" My neovim config.
-"
+"" File: .vimrc
+" Maintainer: Syuq
+"  ██▒   █▓ ██▓ ███▄ ▄███▓ ██▀███   ▄████▄
+" ▓██░   █▒▓██▒▓██▒▀█▀ ██▒▓██ ▒ ██▒▒██▀ ▀█
+"  ▓██  █▒░▒██▒▓██    ▓██░▓██ ░▄█ ▒▒▓█    ▄
+"   ▒██ █░░░██░▒██    ▒██ ▒██▀▀█▄  ▒▓▓▄ ▄██▒
+"    ▒▀█░  ░██░▒██▒   ░██▒░██▓ ▒██▒▒ ▓███▀ ░
+"    ░ ▐░  ░▓  ░ ▒░   ░  ░░ ▒▓ ░▒▓░░ ░▒ ▒  ░
+"    ░ ░░   ▒ ░░  ░      ░  ░▒ ░ ▒░  ░  ▒
+"      ░░   ▒ ░░      ░     ░░   ░ ░
+"       ░   ░         ░      ░     ░ ░
+"      ░                           ░
 call plug#begin('~/.config/nvim/plugged')
 
 " Define bundles via Github repos
+Plug 'github/copilot.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'neovim/nvim-lspconfig'
 Plug 'itchyny/lightline.vim'
@@ -49,7 +53,6 @@ Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'windwp/nvim-autopairs'
 " Plug 'windwp/nvim-ts-autotag'
 " Plug 'lukas-reineke/indent-blankline.nvim'"
-" Lua
 " Plug 'nvim-lua/plenary.nvim'
 " Plug 'sindrets/diffview.nvim'
 
@@ -363,7 +366,7 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
+      \   'gitbranch': 'fugitiveHead()',
       \   'cocstatus': 'coc#status'
       \ },
 \ 'component_expand': {
