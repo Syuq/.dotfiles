@@ -21,6 +21,7 @@ run greenclip daemon &          # run clipboard server daemon
 
 #autostart="mpd xcompmgr dunst unclutter pipewire"
 
+# Make Caps Lock an additional Esc and both Shift Keys toggle Caps Lock
 setxkbmap -option caps:escape,shift:both_capslock &
 
 #for program in $autostart; do

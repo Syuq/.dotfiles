@@ -1,3 +1,8 @@
+# |_   _|/ \|_   _|
+#   | | / _ \ | |
+#   | |/ ___ \| |
+#   |_/_/   \_|_|
+
 #!/bin/zsh
 
 # profile file. Runs on login. Environmental variables are set here.
@@ -59,6 +64,9 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export JAVA_HOME="$(dirname $(dirname $(realpath $(which javac))))"
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
+
+# Node
+# export npm_config_prefix="$HOME/.local"
 
 # Start graphical server on tty1 if not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec startx "$XINITRC"
