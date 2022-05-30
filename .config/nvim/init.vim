@@ -41,6 +41,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'dense-analysis/ale'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'mattn/emmet-vim'
+Plug 'terryma/vim-multiple-cursors'
 " Plug 'tpope/vim-sensible'
 "Plug 'preservim/nerdcommenter'
 "Plug 'ervandew/supertab'
@@ -242,7 +243,7 @@ noremap <M-;> :Buffers<CR>
 
 " bind \ (backward slash) to grep shortcut
 nnoremap <Leader>\ :Ag <C-R><C-W><CR>
-"nnoremap <C-k> /<C-R><C-W><CR>
+nnoremap <C-k> /<C-R><C-W><CR>
 nnoremap \ :Ag<SPACE>
 
 let g:coc_global_extensions = ['coc-java']
@@ -377,6 +378,11 @@ let g:lightline = {
   \   'coc_fix'          : 'LightlineCocFixes',
   \ },
       \ }
+
+" Multi select
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
 
 " fzf.vim
 " Customize fzf colors to match your color scheme
