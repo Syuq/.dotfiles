@@ -211,8 +211,9 @@ nmap [ :vertical res -2<CR> " vertical decrease pane by 2
 map <C-h> :nohl<CR>
 
 " NERD tree configuration
+nnoremap <leader>n :NERDTreeFocus<CR>
 noremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-n> :NERDTreeFind<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
