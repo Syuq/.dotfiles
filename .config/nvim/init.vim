@@ -91,7 +91,7 @@ set shiftround
 set expandtab
 
 " Make it obvious where 90 characters is
-set textwidth=90
+set textwidth=88
 set colorcolumn=+1
 
 " Display extra whitespace
@@ -213,7 +213,7 @@ map <C-h> :nohl<CR>
 " NERD tree configuration
 nnoremap <leader>n :NERDTreeFocus<CR>
 noremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
@@ -323,8 +323,8 @@ nnoremap R :CocCommand <CR>
 command! -nargs=0 Format :call CocAction('format')
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>fm  <Plug>(coc-format-selected)
+" nmap <leader>fm  <Plug>(coc-format-selected)
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -361,7 +361,7 @@ let g:lightline = {
       \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified', 'coc_error', 'coc_warning', 'coc_hint', 'coc_info' ] ],
+      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified'] ],
       \   'right': [ [ 'lineinfo', 'percent' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },

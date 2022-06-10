@@ -66,7 +66,7 @@ export JAVA_HOME="$(dirname $(dirname $(realpath $(which javac))))"
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 
 # Node
-# export npm_config_prefix="$HOME/.local"
+export npm_config_prefix="$HOME/.local"
 
 # Start graphical server on tty1 if not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec startx "$XINITRC"
