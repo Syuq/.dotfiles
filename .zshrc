@@ -91,6 +91,7 @@ alias gsync="git checkout master && git fetch upstream && git rebase upstream/ma
 alias glog='git log --graph --oneline --decorate --all'
 
 alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
+alias packinstalled="comm -12 <(grep -Poe '\[ALPM\] installed \K\S*' /var/log/pacman.log | sort | uniq) <(pacman -Qeqn | sort)"
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pacman-contrib='pacman -Ql pacman pacman-contrib | grep -E 'bin/.+''

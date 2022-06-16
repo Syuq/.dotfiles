@@ -148,8 +148,8 @@ set foldmethod=manual
 " \ }
 
 " Load the colorscheme
-" colorscheme tokyonight
- colorscheme nord
+colorscheme tokyonight
+ " colorscheme nord
 " Auto indenting
 " filetype plugin indent on
 
@@ -461,12 +461,15 @@ map <Leader>rnf :call RenameFile()<cr>
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
+  context_commentstring = {
+      enable = true,
+  },
   highlight = {
     enable = true,
-    disable = {},
+    additional_vim_regex_highlighting = {"php"},
   },
   indent = {
-    enable = false,
+    enable = true,
     disable = {},
   },
   ensure_installed = {
@@ -479,6 +482,11 @@ require'nvim-treesitter.configs'.setup {
     "css",
     "html",
     "cpp",
+  },
+  rainbow = {
+        enable = true,
+        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+        max_file_lines = nil, -- Do not enable for files with more than n lines, int
   },
 }
 EOF
