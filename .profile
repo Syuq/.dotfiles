@@ -19,7 +19,7 @@ export VISUAL=/usr/bin/nvim
 export PAGER="less"
 export BAT_THEME="Dracula"
 # export LESS='-iMRS -x2'
-export LESS='-R --use-color -Dd+r$Du+b'
+export LESS='-R --use-color -Dd+g$Du+b'
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"

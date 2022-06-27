@@ -71,7 +71,7 @@ plugins=(
          history-substring-search
          fzf
          autojump
-         copydir
+         copypath
          copyfile
 )
 

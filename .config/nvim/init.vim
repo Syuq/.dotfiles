@@ -385,6 +385,9 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 
+" Rust
+let g:rust_clip_command = 'xclip -selection clipboard'
+
 " fzf.vim
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
@@ -466,7 +469,7 @@ require'nvim-treesitter.configs'.setup {
   },
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = {"php"},
+    additional_vim_regex_highlighting = {"php", "html"},
   },
   indent = {
     enable = true,
