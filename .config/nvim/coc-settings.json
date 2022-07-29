@@ -1,90 +1,197 @@
 {
-		"diagnostic.checkCurrentLine": true,
-		"diagnostic.virtualTextCurrentLineOnly": false,
-		"diagnostic.errorSign": " ",
-		"diagnostic.warningSign": " ",
-		"coc.source.file.shortcut": "File",
-		"coc.source.around.shortcut": "?",
-		//"suggest.disableKind": true,
-		"suggest.completionItemKindLabels": {
-				"keyword": "\uf1de",
-				"variable": "\ue79b",
-				"value": "\uf89f",
-				"operator": "\u03a8",
-				"constructor": "\uf0ad",
-				"function": "\u0192",
-				"reference": "\ufa46",
-				"constant": "\uf8fe",
-				"method": "\uf09a",
-				"struct": "\ufb44",
-				"class": "\uf0e8",
-				"interface": "\uf417",
-				"text": "\ue612",
-				"enum": "\uf435",
-				"enumMember": "\uf02b",
-				"module": "\uf40d",
-				"color": "\ue22b",
-				"property": "\ue624",
-				"field": "\uf9be",
-				"unit": "\uf475",
-				"event": "\ufacd",
-				"file": "\uf723",
-				"folder": "\uf114",
-				"snippet": "\ue60b",
-				"typeParameter": "\uf728",
-				"default": "\uf29c"
+	"codeLens.enable": true,
+	"codeLens.position": "eol",
+	"coc.preferences.extensionUpdateCheck": "daily",
+	"coc.preferences.enableMessageDialog": true,
+	"coc.preferences.formatOnType": true,
+	"coc.preferences.willSaveHandlerTimeout": 1000,
+	"coc.preferences.enableLinkedEditing": true,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"c",
+		"go",
+		"python",
+		"rust",
+		"markdown",
+		"javascript",
+		"typescript",
+		"json",
+		"jsonc"
+	],
+	"diagnostic.format": "%message [%source]",
+	"diagnostic.virtualText": true,
+	"diagnostic.checkCurrentLine": true,
+	"diagnostic.separateRelatedInformationAsDiagnostics": true,
+	"eslint.autoFixOnSave": true,
+	"eslint.format.enable": true,
+	"eslint.packageManager": "yarn",
+	"git.addGBlameToVirtualText": true,
+	"go.goplsPath": "gopls",
+	"go.goplsOptions": {
+		"experimentalPostfixCompletions": true,
+		"semanticTokens": true,
+		"linksInHover": false,
+		"usePlaceholders": true,
+		"staticcheck": true
+	},
+	"hover.floatConfig": {
+		"rounded": true,
+		"border": true
+	},
+	"list.normalMappings": {
+		"<C-c>": "do:exit"
+	},
+	"list.insertMappings": {
+		"<C-c>": "do:exit"
+	},
+	"list.source.grep.useLiteral": false,
+	"list.source.grep.defaultArgs": [
+		"--ignore-case"
+	],
+	"markdownlint.config": {
+		"default": true,
+		"line-length": false
+	},
+	"python.formatting.provider": "black",
+	"python.formatting.blackdHTTPHeaders": {
+		"X-Fast-Or-Safe": "fast"
+	},
+	"python.linting.enabled": false,
+	"python.analysis.diagnosticMode": "workspace",
+	"python.linting.pylintEnabled": true,
+	"semanticTokens.filetypes": [
+		"*"
+	],
+	"signature.target": "echo",
+	"suggest.detailField": "abbr",
+	"suggest.defaultSortMethod": "none",
+	"suggest.selection": "recentlyUsedByPrefix",
+	"suggest.floatConfig": {
+		"rounded": true,
+		"border": true
+	},
+	"signature.floatConfig": {
+		"rounded": true,
+		"border": true
+	},
+	"sumneko-lua.enableNvimLuaDev": true,
+	"Lua.completion.callSnippet": "Both",
+	"Lua.completion.postfix": ".",
+	"Lua.runtime.version": "LuaJIT",
+	"Lua.telemetry.enable": false,
+	"Lua.diagnostics.globals": [
+		"vim",
+		"jit"
+	],
+	"snippets.ultisnips.enable": false,
+	"snippets.extends": {
+		"javascriptreact": [
+			"javascript"
+		],
+		"typescript": [
+			"javascript"
+		]
+	},
+	"tsserver.implicitProjectConfig.checkJs": true,
+	"typescript.format.semicolons": "ignore",
+	"typescript.autoClosingTags": true,
+	"typescript.referencesCodeLens.showOnAllFunctions": true,
+	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+	// "typescript.inlayHints.parameterNames.enabled": "literals",
+	"typescript.inlayHints.parameterTypes.enabled": true,
+	"typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+	"typescript.inlayHints.variableTypes.enabled": true,
+	"typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+	"typescript.inlayHints.enumMemberValues.enabled": true,
+	"typescript.preferences.useAliasesForRenames": false,
+	"colors.filetypes": [
+		"*"
+	],
+	"diagnostic.virtualTextCurrentLineOnly": false,
+	"diagnostic.errorSign": " ",
+	"diagnostic.warningSign": " ",
+	"coc.source.file.shortcut": "File",
+	"coc.source.around.shortcut": "?",
+	//"suggest.disableKind": true,
+	"suggest.completionItemKindLabels": {
+		"keyword": "\uf1de",
+		"variable": "\ue79b",
+		"value": "\uf89f",
+		"operator": "\u03a8",
+		"constructor": "\uf0ad",
+		"function": "\u0192",
+		"reference": "\ufa46",
+		"constant": "\uf8fe",
+		"method": "\uf09a",
+		"struct": "\ufb44",
+		"class": "\uf0e8",
+		"interface": "\uf417",
+		"text": "\ue612",
+		"enum": "\uf435",
+		"enumMember": "\uf02b",
+		"module": "\uf40d",
+		"color": "\ue22b",
+		"property": "\ue624",
+		"field": "\uf9be",
+		"unit": "\uf475",
+		"event": "\ufacd",
+		"file": "\uf723",
+		"folder": "\uf114",
+		"snippet": "\ue60b",
+		"typeParameter": "\uf728",
+		"default": "\uf29c"
+	},
+	"languageserver": {
+		"go": {
+			"command": "gopls",
+			"rootPatterns": [
+				"go.mod"
+			],
+			"trace.server": "verbose",
+			"filetypes": [
+				"go"
+			]
 		},
-		"languageserver": {	
-				// C++
-				"ccls": {
-						"command": "ccls",
-						"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-						"rootPatterns": [".ccls", "compile_commands.json"],
-						"initializationOptions": {
-								"cache": {
-										"directory": ".ccls-cache",
-										"format": "binary"
-								},
-								"client": {
-										"snippetSupport": true
-								},
-								"index": {
-										"onChange": true
-								},
-								"highlight": {
-										"lsRanges": true
-								}//,
-								//"clang": {
-          			//		"resourceDir": "/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0",
-          			//		"extraArgs": [
-								//				"-isystem",
-								//				"/Library/Developer/CommandLineTools/usr/include/c++/v1",
-								//				"-I",
-								//				"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/"        
-          			//		]
-        				//}	
-						}
+		// C++
+		"ccls": {
+			"command": "ccls",
+			"filetypes": [
+				"c",
+				"cpp",
+				"cuda",
+				"objc",
+				"objcpp"
+			],
+			"rootPatterns": [
+				".ccls",
+				"compile_commands.json"
+			],
+			"initializationOptions": {
+				"cache": {
+					"directory": ".ccls-cache",
+					"format": "binary"
 				},
-				"cmake": {
-						"command": "cmake-language-server",
-						"filetypes": ["cmake"],
-						"rootPatterns": [
-								"build/"
-						],
-						"initializationOptions": {
-								"buildDirectory": "build"
-						}
-				}//,
-				//"haskell": {
-						//"command": "haskell-language-server-wrapper",
-						//"args": ["--lsp"],
-    					//"rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
-    					//"filetypes": ["haskell", "lhaskell"]
-				//}
+				"client": {
+					"snippetSupport": true
+				},
+				"index": {
+					"onChange": true
+				},
+				"highlight": {
+					"lsRanges": true
+				}
+			}
+		},
+		"cmake": {
+			"command": "cmake-language-server",
+			"filetypes": [
+				"cmake"
+			],
+			"rootPatterns": [
+				"build/"
+			],
+			"initializationOptions": {
+				"buildDirectory": "build"
+			}
 		}
+	}
 }
-
-// codelens
-//"codeLens.enable": true,
-//"java.referencesCodeLens.enabled": true,
-//"java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar",

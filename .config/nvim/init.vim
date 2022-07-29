@@ -10,62 +10,86 @@
 "      ░░   ▒ ░░      ░     ░░   ░ ░
 "       ░   ░         ░      ░     ░ ░
 "      ░                           ░
-call plug#begin('~/.config/nvim/plugged')
 
+" plug.vim {{{
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+call plug#begin('~/.config/nvim/plugged')
 " Define bundles via Github repos
+Plug 'andymass/vim-matchup'
+Plug 'echasnovski/mini.nvim'
+Plug 'kevinhwang91/nvim-bqf'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'antoinemadec/FixCursorHold.nvim'
+
 Plug 'github/copilot.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lualine/lualine.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
-" Plug 'jiangmiao/auto-pairs'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'NvChad/nvim-colorizer.lua'
+Plug 'vladdoster/remember.nvim'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
-Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'morhetz/gruvbox'
+Plug 'shaunsingh/nord.nvim'
+Plug 'hrsh7th/nvim-cmp'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'm-demare/hlargs.nvim'
+
 Plug 'unblevable/quick-scope'
 Plug 'honza/vim-snippets'
 Plug 'rust-lang/rust.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'dense-analysis/ale'
-Plug 'OmniSharp/omnisharp-vim'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-multiple-cursors'
 " Plug 'tpope/vim-sensible'
 "Plug 'preservim/nerdcommenter'
 "Plug 'ervandew/supertab'
-" Plug 'windwp/nvim-autopairs'
 Plug 'sheerun/vim-polyglot'
-" Plug 'editorconfig/editorconfig-vim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'alvan/vim-closetag'
 " Plug 'dart-lang/dart-vim-plugin'
 Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'windwp/nvim-autopairs'
+" Plug 'ludovicchabant/vim-gutentags'
 " Plug 'windwp/nvim-ts-autotag'
-" Plug 'lukas-reineke/indent-blankline.nvim'"
-" Plug 'nvim-lua/plenary.nvim'
 " Plug 'sindrets/diffview.nvim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fannheyward/go.vim', { 'for': 'go' }
+Plug 'fannheyward/telescope-coc.nvim'
+Plug 'fannheyward/telescope-maple.nvim'
 
 Plug 'mhinz/vim-startify'
 
 call plug#end()
+" }}} plug.vim
 
+" basic {{{
 " Leader
-let mapleader = " "
+" let mapleader = " "
 
+set fileencoding=utf-8
+set fileencodings=utf-8,utf-16le,utf-16,big5,euc-jp,euc-kr,latin-1
 set guifont=JetBrainsMono\ Nerd\ Font:h9
-" set guifont=JoyPixels:h9
 set encoding=UTF-8
 set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
@@ -80,6 +104,7 @@ set autowrite     " Automatically :write before running commands
 
 set autoindent
 set smartindent
+set list listchars=tab:\|\ ,trail:·,eol:¬
 
 set autoread
 set autowrite
@@ -136,62 +161,60 @@ set foldmethod=manual
 
 " set background=dark
 
-" Example config in VimScript
-" let g:tokyonight_style = "storm"
-" let g:tokyonight_italic_functions = 1
-" let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-
-" " Change the "hint" color to the "orange" color, and make the "error" color bright red
-" let g:tokyonight_colors = {
-"   \ 'hint': 'orange',
-"   \ 'error': '#ff0000'
-" \ }
+" Example config in Vim-Script
+let g:nord_contrast = v:true
+let g:nord_borders = v:true
+let g:nord_disable_background = v:true
+let g:nord_italic = v:true
+let g:nord_enable_sidebar_background = v:true
 
 " Load the colorscheme
-colorscheme tokyonight
- " colorscheme nord
+colorscheme nord
+
+" Example config in VimScript
+let g:tokyonight_style = "storm"
+let g:tokyonight_terminal_colors = "true"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+
+
 " Auto indenting
-" filetype plugin indent on
+filetype plugin indent on
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
+" }}} basic
 
-" if filereadable(expand("~/.vimrc.bundles"))
-"   source ~/.vimrc.bundles
-" endif
+" mappings {{{
+"cmap w!! %!sudo tee > /dev/null %
 
-augroup vimrcEx
-  autocmd!
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it for commit messages, when the position is invalid, or when
-  " inside an event handler (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-        \   exe "normal g`\"" |
-        \ endif
-augroup END
+" Copy and paste to system clipboard with <Leader>p and <Leader>y
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+noremap gV `[v`]
+nnoremap <CR> G
+nnoremap <BS> gg
 
-" Go file config
-" au FileType go set noexpandtab
-" au FileType go set shiftwidth=4
-" au FileType go set softtabstop=4
-" au FileType go set tabstop=4
+" system clipboard
+nmap <a-c> "+y
+vmap <a-c> "+y
+nmap <a-v> "+p
+inoremap <a-v> <c-r>+
+cnoremap <a-v> <c-r>+
+" use <c-r> to insert original character without triggering things like auto-pairs
+inoremap <c-r> <c-v>
 
-" au BufRead,BufNewFile .eslintrc.json setlocal filetype=json
-" au BufRead,BufNewFile .babelrc setlocal filetype=json
-" au BufRead,BufNewFile .prettierrc setlocal filetype=json
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
 
-" au BufRead,BufNewFile .babelrc.js setlocal filetype=javascript
-" au BufRead,BufNewFile .sequelizerc setlocal filetype=javascript
-" au BufRead,BufNewFile *.hbs setlocal filetype=html
+map <Leader>rnf :call RenameFile()<cr>
 
-" When the type of shell script is /bin/sh, assume a POSIX-compatible
-" shell for syntax highlighting purposes.
-let g:is_posix = 1
-
+map <silent> <leader>ee :e $HOME/.config/nvim/init.vim<CR>
+map <silent> <leader>dd :e $HOME/.config/nvim/dev.dict<CR>
+setl dictionary+=$HOME/.config/nvim/dev.dict
 " Use tab with text block
 vmap <Tab> >gv
 vmap <S-Tab> <gv
@@ -213,8 +236,74 @@ map <C-h> :nohl<CR>
 " NERD tree configuration
 nnoremap <leader>n :NERDTreeFocus<CR>
 noremap <C-t> :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap F :NERDTreeFind<CR>
 
+" bind \ (backward slash) to grep shortcut
+" nnoremap <Leader>\ :Ag <C-R><C-W><CR>
+" nnoremap <C-k> /<C-R><C-W><CR>
+" nnoremap \ :Ag<SPACE>
+
+vmap <silent> <expr> p <sid>Repl()
+
+" }}} mappings
+
+" Go file config {{{
+" au FileType go set noexpandtab
+" au FileType go set shiftwidth=4
+" au FileType go set softtabstop=4
+" au FileType go set tabstop=4
+
+" au BufRead,BufNewFile .eslintrc.json setlocal filetype=json
+" au BufRead,BufNewFile .babelrc setlocal filetype=json
+" au BufRead,BufNewFile .prettierrc setlocal filetype=json
+
+" au BufRead,BufNewFile .babelrc.js setlocal filetype=javascript
+" au BufRead,BufNewFile .sequelizerc setlocal filetype=javascript
+" au BufRead,BufNewFile *.hbs setlocal filetype=html
+" }}} Go file config
+" When the type of shell script is /bin/sh, assume a POSIX-compatible
+" shell for syntax highlighting purposes.
+let g:is_posix = 1
+
+" Rust
+let g:rust_clip_command = 'xclip -selection clipboard'
+
+" lightline {{{
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified'] ],
+      \   'right': [ [ 'lineinfo', 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitiveHead()',
+      \   'cocstatus': 'coc#status',
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat',
+      \ },
+\ 'component_expand': {
+  \   'coc_error'        : 'LightlineCocErrors',
+  \   'coc_warning'      : 'LightlineCocWarnings',
+  \   'coc_info'         : 'LightlineCocInfos',
+  \   'coc_hint'         : 'LightlineCocHints',
+  \   'coc_fix'          : 'LightlineCocFixes',
+  \ },
+      \ }
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+" }}} lightline
+
+" NERDTree {{{
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
@@ -238,16 +327,38 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ }
 
 let g:NERDTreeGitStatusUseNerdFonts = 1
-" fzf
-noremap ` :Files<CR>
-noremap <M-;> :Buffers<CR>
+" }}} NERDTree
 
-" bind \ (backward slash) to grep shortcut
-nnoremap <Leader>\ :Ag <C-R><C-W><CR>
-nnoremap <C-k> /<C-R><C-W><CR>
-nnoremap \ :Ag<SPACE>
+" coc.nvim {{{
+let g:coc_enable_locationlist = 0
+let g:coc_global_extensions = [
+      \'coc-dictionary',
+      \'coc-ecdict',
+      \'coc-eslint',
+      \'coc-git',
+      \'coc-go',
+      \'coc-html',
+      \'coc-json',
+      \'coc-lists',
+      \'coc-markdownlint',
+      \'coc-marketplace',
+      \'coc-mocword',
+      \'coc-sh',
+      \'coc-snippets',
+      \'coc-sumneko-lua',
+      \'coc-tsserver',
+      \'coc-typos',
+      \'coc-vetur',
+      \'coc-vimlsp',
+      \'coc-xml',
+      \'coc-yaml',
+      \'coc-yank'
+      \]
 
-let g:coc_global_extensions = ['coc-java']
+let g:coc_filetype_map = {
+      \ 'asciidoc': 'markdown',
+      \ }
+
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
@@ -284,7 +395,7 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd :call <SID>go_to_definition()<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -348,48 +459,46 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-" Easymotion
+autocmd User CocDiagnosticChange call lightline#update()
+" }}} coc.nvim
+
+" Neovim LSP {{{
+lua <<EOF
+--require('nvim-lsp')
+EOF
+" }}} Neovim LSP
+
+" Easymotion {{{
 " s{char}{char} to move to {char}{char} over windows
 nmap <Leader>F <Plug>(easymotion-overwin-f)
 " Move to line over windows
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Search n-chars
 map / <Plug>(easymotion-sn)
+" }}} Easymotion
 
-" Lightline 
-let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified'] ],
-      \   'right': [ [ 'lineinfo', 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitiveHead()',
-      \   'cocstatus': 'coc#status'
-      \ },
-\ 'component_expand': {
-  \   'coc_error'        : 'LightlineCocErrors',
-  \   'coc_warning'      : 'LightlineCocWarnings',
-  \   'coc_info'         : 'LightlineCocInfos',
-  \   'coc_hint'         : 'LightlineCocHints',
-  \   'coc_fix'          : 'LightlineCocFixes',
-  \ },
-      \ }
-
-" Multi select
+" Multi select {{{
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
+" }}} Multi select
 
-" Rust
-let g:rust_clip_command = 'xclip -selection clipboard'
+" fzf.vim {{{
 
-" fzf.vim
 " Customize fzf colors to match your color scheme
+noremap <space>f :Files<CR>
+noremap <space>b :Buffers<CR>
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -404,50 +513,191 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+" }}} fzf.vim
 
-" Quick Scope
+" Quick Scope {{{
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 highlight QuickScopePrimary guifg='#afff5f' ctermfg=155
 highlight QuickScopeSecondary guifg='#5fffff' ctermfg=81
+" }}} Quick Scope
 
-" Copy and paste to system clipboard with <Leader>p and <Leader>y
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-noremap gV `[v`]
-nnoremap <CR> G
-nnoremap <BS> gg
+" Lua {{{
+lua <<EOF
+--require('lualine').setup({
+--  options = {
+--    globalstatus = true,
+--  },
+--  sections = {
+--    lualine_c = { 'filename', 'g:coc_status' }
+--  }
+--})
 
-" system clipboard
-nmap <a-c> "+y
-vmap <a-c> "+y
-nmap <a-v> "+p
-inoremap <a-v> <c-r>+
-cnoremap <a-v> <c-r>+
-" use <c-r> to insert original character without triggering things like auto-pairs
-inoremap <c-r> <c-v>
+require'nvim-treesitter.configs'.setup {
+  context_commentstring = {
+      enable = true,
+  },
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = {"javascript", "html"},
+  },
+  indent = {
+    enable = true,
+    disable = {},
+  },
+  ensure_installed = {
+    "bash",
+    "java",
+    "c",
+    "rust",
+    "javascript",
+    "css",
+    "html",
+    "cpp",
+    "go",
+  },
+  rainbow = {
+        enable = true,
+        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+        max_file_lines = nil, -- Do not enable for files with more than n lines, int
+  },
+}
 
-" Auto pair
-"let g:AutoPairsFlyMode = 1
-"let g:AutoPairsShortcutBackInsert = '<M-b>'
+require("telescope").setup({
+  defaults = {
+    generic_sorter = require('mini.fuzzy').get_telescope_sorter,
+    mappings = {
+      i = {
+        ["<esc>"] = require("telescope.actions").close,
+        ["<C-j>"] = require("telescope.actions").move_selection_next,
+        ["<C-k>"] = require("telescope.actions").move_selection_previous,
+      }
+    }
+  }
+})
+require('telescope').load_extension('coc')
+require('telescope').load_extension('maple')
 
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+require('mini.fuzzy').setup()
+require('mini.comment').setup()
+--require('mini.surround').setup()
+require('mini.tabline').setup()
+require('mini.trailspace').setup()
 
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+require('colorizer').setup()
+require('hlargs').setup()
+require('remember')
 
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
+require("nvim-autopairs").setup {}
+EOF
+" }}} Lua
 
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
+" Auto close tag {{{
+let g:closetag_filenames = '*.html,*.js,*.jsx,*.vue,*.php,*.css,*.scss,*.sass,*.less,*.styl,*.ts,*.tsx'
+let g:closetag_emptyTags_caseSensitive = 1
+let g:jsx_ext_required = 0
+" }}} Auto close tag
 
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+" autocmd {{{
+augroup vimrcEx
+  autocmd!
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
+augroup END
 
-" Use <leader>x for convert visual selected code to snippet
-xmap <leader>x  <Plug>(coc-convert-snippet)
+augroup common
+  autocmd!
+  autocmd BufNewFile,BufRead *.jl setlocal filetype=julia
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+  autocmd BufNewFile,BufRead *.jsx setlocal filetype=javascript.jsx
+  autocmd BufNewFile,BufRead *.json setlocal filetype=jsonc
+  autocmd BufNewFile,BufRead go.work.sum setlocal filetype=gosum
+  autocmd BufNewFile,BufRead go.work setlocal filetype=gowork
 
+  autocmd FileType go setlocal expandtab
+  autocmd FileType go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+  autocmd FileType lua setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+  autocmd FileType lua setlocal include=require
+  autocmd FileType lua setlocal define=function
+  autocmd FileType markdown setlocal suffixesadd=.md
+  autocmd FileType make set noexpandtab shiftwidth=4 softtabstop=0
+  autocmd FileType crontab setlocal nobackup nowritebackup
+  autocmd FileType lua,ruby,html,javascript,typescript,css,json,vue,vim,yaml setlocal shiftwidth=2 tabstop=2
+  autocmd FileType qf if mapcheck('<esc>', 'n') ==# '' | nnoremap <buffer><silent> <esc> :cclose<bar>lclose<CR> | endif
+  autocmd FileType list lua require('bqf.magicwin.handler').attach()
+
+  autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+  autocmd BufReadPost *.log normal! G
+  autocmd QuickFixCmdPost cgetexpr cwindow
+  autocmd QuickFixCmdPost lgetexpr lwindow
+
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  autocmd User CocLocationsChange call s:coc_qf_jump2loc(g:coc_jump_locations)
+
+  autocmd BufWritePre *.go silent! :call CocAction('runCommand', 'editor.action.organizeImport')
+
+  " set up default omnifunc
+  autocmd FileType *
+        \ if &omnifunc == "" |
+        \    setlocal omnifunc=syntaxcomplete#Complete |
+        \ endif
+augroup end
+" }}} autocmd
+
+" Neovide {{{
+let g:neovide_cursor_vfx_mode = "railgun"
+let g:neovide_input_use_logo=v:true
+let g:neovide_cursor_antialiasing=v:true
+" let g:neovide_fullscreen=v:true
+" }}} Neovide
+
+" Emmet {{{
+" let g:user_emmet_settings = {
+" \  'php' : {
+" \    'extends' : 'html',
+" \    'filters' : 'c',
+" \    'snippets': {
+" \      'pr': "echo '<pre>' . print_r( |, true ) . '</pre>';",
+" \      'e': 'echo |;',
+" \      'vd': 'var_dump(|);'
+" \    }
+" \  },
+" \  'javascript' : {
+" \    'snippets': {
+" \      'cl': 'console.log( | );',
+" \      'cd': 'console.dir( | );',
+" \      'ci': 'console.info( | );',
+" \      'cde': 'console.debug( | )'
+" \    }
+" \  }
+" \}
+" let g:user_emmet_mode='n'    "only enable normal mode functions.
+" let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+" let g:user_emmet_mode='a'    "enable all function in all mode.
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall
+" }}} Emmet
+
+" wildignore {{{
+set wildignore=*.o,*.obj,*~,*.exe,*.a,*.pdb,*.lib
+set wildignore+=*.so,*.dll,*.swp,*.egg,*.jar,*.class,*.pyc,*.pyo,*.bin,*.dex
+set wildignore+=*.log,*.pyc,*.sqlite,*.sqlite3,*.min.js,*.min.css,*.tags
+set wildignore+=*.zip,*.7z,*.rar,*.gz,*.tar,*.gzip,*.bz2,*.tgz,*.xz
+set wildignore+=*.png,*.jpg,*.gif,*.bmp,*.tga,*.pcx,*.ppm,*.img,*.iso
+set wildignore+=*.pdf,*.dmg,*.app,*.ipa,*.apk,*.mobi,*.epub
+set wildignore+=*.mp4,*.avi,*.flv,*.mov,*.mkv,*.swf,*.swc
+set wildignore+=*.ppt,*.pptx,*.doc,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
+set wildignore+=*/.git/*,*/.svn/*,*.DS_Store
+set wildignore+=*/node_modules/*,*/nginx_runtime/*,*/build/*,*/logs/*,*/dist/*,*/tmp/*
+" }}} wildignore
+
+" functions {{{
 " Rename current file
 function! RenameFile()
   let old_name = expand('%')
@@ -458,97 +708,27 @@ function! RenameFile()
     redraw!
   endif
 endfunction
-map <Leader>rnf :call RenameFile()<cr>
-
-"cmap w!! %!sudo tee > /dev/null %
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  context_commentstring = {
-      enable = true,
-  },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = {"php", "html"},
-  },
-  indent = {
-    enable = true,
-    disable = {},
-  },
-  ensure_installed = {
-    "bash",
-    "java",
-    "c",
-    "c_sharp",
-    "javascript",
-    "php",
-    "css",
-    "html",
-    "cpp",
-  },
-  rainbow = {
-        enable = true,
-        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-        max_file_lines = nil, -- Do not enable for files with more than n lines, int
-  },
-}
-EOF
-
-" Auto close tag
-let g:closetag_filenames = '*.html,*.js,*.jsx,*.vue'
-let g:closetag_emptyTags_caseSensitive = 1
-let g:jsx_ext_required = 0
-
-
-" Neovide
-let g:neovide_cursor_vfx_mode = "railgun"
-let g:neovide_input_use_logo=v:true
-let g:neovide_cursor_antialiasing=v:true
-" let g:neovide_fullscreen=v:true
-
-" Emmet
-let g:user_emmet_mode='n'    "only enable normal mode functions.
-let g:user_emmet_mode='inv'  "enable all functions, which is equal to
-let g:user_emmet_mode='a'    "enable all function in all mode.
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
-" Supprot for different goto definitions for different file types.
-autocmd FileType cs nmap <silent> gd :OmniSharpGotoDefinition<CR>
-autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
-autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
-autocmd FileType cs nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
-
-let g:ale_sign_error = ' '
-let g:ale_sign_warning = ' '
-let g:ale_linters_ignore = {
-      \   'typescript': ['tslint'],
-      \}
-
-let g:ale_linters = {
-\ 'cs': ['OmniSharp']
-\}
-highlight ALEWarning ctermbg=DarkMagenta
-
 " vp doesn't replace paste buffer
 function! RestoreRegister()
   let @" = s:restore_reg
   return ''
 endfunction
+
 function! s:Repl()
   let s:restore_reg = @"
   return "p@=RestoreRegister()\<cr>"
 endfunction
-vmap <silent> <expr> p <sid>Repl()
 
+function! s:go_to_definition()
+  if CocActionAsync('jumpDefinition')
+    return v:true
+  endif
 
-let g:lightline.component_type = {
-\   'coc_error'        : 'error',
-\   'coc_warning'      : 'warning',
-\   'coc_info'         : 'tabsel',
-\   'coc_hint'         : 'middle',
-\   'coc_fix'          : 'middle',
-\ }
+  let ret = execute("silent! normal \<C-]>")
+  if ret =~ "Error"
+    call searchdecl(expand('<cword>'))
+  endif
+endfunction
 
 function! s:lightline_coc_diagnostic(kind, sign) abort
   let info = get(b:, 'coc_diagnostic_info', 0)
@@ -580,5 +760,49 @@ function! LightlineCocHints() abort
 endfunction
 \ }
 
-autocmd User CocDiagnosticChange call lightline#update()
+" }}} functions
 
+" vim-gutentags {{{
+set tags=./.tags;,.tags
+let g:gutentags_project_root = ['.root', '.git', '.svn', '.hg', '.project']
+let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_ctags_extra_args = ['--output-format=e-ctags']
+let g:gutentags_ctags_exclude = ['*.md', '*.json', '*.js', '*.ts', '*.jsx', '*.css', '*.less', '*.sass', '*.go', '*.dart', 'node_modules', 'dist', 'vendor']
+" }}} vim-gutentags
+
+" go.vim {{{
+let g:go_fmt_command = "gofumpt"
+" }}} go.vim
+
+"" Syntax theme "{{{
+"" ---------------------------------------------------------------------
+
+"" true color
+"if exists("&termguicolors") && exists("&winblend")
+"  syntax enable
+"  set termguicolors
+"  set winblend=0
+"  set wildoptions=pum
+"  set pumblend=5
+"  set background=dark
+"  " Use NeoSolarized
+"  let g:neosolarized_termtrans=1
+"  runtime ./colors/NeoSolarized.vim
+"  colorscheme NeoSolarized
+"endif
+
+""}}}
+
+"" Extras "{{{
+"" ---------------------------------------------------------------------
+"set exrc
+""}}}
+
+" telescope.nvim {{{
+nnoremap <silent><nowait> <M-;> :<C-u>Telescope buffers<CR>
+nnoremap <silent><nowait> ` :<C-u>Telescope find_files<CR>
+nnoremap <silent><nowait> <space>g  :<C-u>Telescope maple<CR>
+nmap g<Enter> :Telescope<CR>
+" }}}} telescope.nvim
+
+" vim: set foldmethod=marker foldlevel=0:

@@ -1,0 +1,48 @@
+font:
+  size: 9.9
+  offset:
+    y: 1
+  normal:
+    family: "JetBrainsMono Nerd Font"
+    style: Medium
+  bold:
+    family: "JetBrains Mono Nerd Font"
+    style:  Bold
+  italic:
+    family: "JetBrains Mono Nerd Font"
+    style:  MediumItalic
+  bold_italic:
+    family: "JetBrains Mono Nerd Font"
+    style: BoldItalic
+draw_bold_text_with_bright_colors: true
+
+window:
+  padding:
+    x: 0
+    y: 0
+  dimensions:
+    columns: 120
+    lines: 30
+  opacity: 0.6
+
+cursor:
+  unfocused_hollow: true
+  style:
+    blinking: Always
+
+env:
+  TERM: xterm-256color
+
+scrolling:
+  history: 10000
+  auto_scroll: true
+
+key_bindings:
+  - { key: Escape, mods: Control,                         action: ToggleViMode   }
+  - { key: I,                           mode: Vi|~Search, action: ToggleViMode   }
+  - { key: 7,      mods: Shift,         mode: Vi|~Search, action: FirstOccupied  }
+  - { key: 5,      mods: Shift,         mode: Vi|~Search, action: Last           }
+  - { key: 6,      mods: Shift,         mode: Vi|~Search, action: Bracket        }
+  - { key: 53,     mods: Shift,         mode: Vi|~Search, action: SearchBackward }
+  - { key: N,      mods: Control,       mode: Vi,         action: SearchEnd      }
+  - { key: N,      mods: Control|Shift, mode: Vi,         action: SearchStart    }

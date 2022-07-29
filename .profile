@@ -17,7 +17,7 @@ export BROWSER=/usr/bin/brave
 export DIFFPROG="nvim -d"
 export VISUAL=/usr/bin/nvim
 export PAGER="less"
-export BAT_THEME="Dracula"
+export BAT_THEME="Nord"
 # export LESS='-iMRS -x2'
 export LESS='-R --use-color -Dd+g$Du+b'
 
@@ -37,7 +37,8 @@ export XINITRC="$HOME/.xinitrc"
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
 
 # FFF
-export FZF_DEFAULT_COMMAND='ag -g ""'
+# export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='ag --nogroup --column --color ^'
 export FZF_DEFAULT_OPTS='--history-size=50000 --height 40% --reverse --border'
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -100,3 +101,6 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

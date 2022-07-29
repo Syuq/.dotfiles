@@ -24,7 +24,7 @@ function ordinal () {
 echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
 
 cal -3
-echo "${normal}🌴"
+echo "${normal}🌴" 
 # echo ${(%):-'%F{yellow}%B%b%f'}
 echo "${Blue}${bold}$(sb-clock)"
 # If you come from bash you might have to change your $PATH.
@@ -37,8 +37,8 @@ export ZSH="/home/tat/.oh-my-zsh"
 # ZSH_THEME="dracula"
 # DRACULA_DISPLAY_CONTEXT=1
 # export KEYTIMEOUT=1
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-VI_MODE_SET_CURSOR=true
+# VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+# VI_MODE_SET_CURSOR=true
 
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
@@ -65,7 +65,7 @@ plugins=(
          git-flow-completion
          sudo
          web-search
-         vi-mode
+         # vi-mode
          zsh-autosuggestions
          zsh-syntax-highlighting
          history-substring-search
@@ -73,6 +73,7 @@ plugins=(
          autojump
          copypath
          copyfile
+         emoji
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -98,6 +99,15 @@ alias pacman-contrib='pacman -Ql pacman pacman-contrib | grep -E 'bin/.+''
 alias pacfzf='pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse'
 alias neovide='neovide --nofork'
 alias bc='bc -l ~/.bcrc'
+
+# npm shortcuts that only list top-level modules
+alias l="yarn list --depth=0 2>/dev/null"
+alias lg="npm list -g --depth=0 2>/dev/null"
+
+# git shortcuts
+alias gg="git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
+alias ggr="git log --reverse --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
+
 # alias pacsize="LC_ALL=C pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h"
 
 # Call `nvm use` automatically in a directory with a `.nvmrc` file
@@ -138,3 +148,12 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 . ~/.oh-my-zsh/custom/plugins/z/z.sh
+
+random_emoji fruits
+
+# bun completions
+[ -s "/home/tat/.bun/_bun" ] && source "/home/tat/.bun/_bun"
+
+# Bun
+export BUN_INSTALL="/home/tat/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
