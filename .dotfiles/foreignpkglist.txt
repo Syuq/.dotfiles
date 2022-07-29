@@ -1,0 +1,17 @@
+android-sdk
+bauh
+cava
+google-chrome
+heroku-cli
+hollywood
+lf-git
+libxft-bgra
+linux513
+paru
+postman-bin
+qt5-styleplugins
+rofi-greenclip
+teamviewer
+vertex-maia-themes
+visual-studio-code-bin
+xdman
