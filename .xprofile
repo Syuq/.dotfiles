@@ -16,8 +16,8 @@ run picom -b                    # for transparency
 run dunst &                     # notification server
 # run ibus-daemon -drx            # start ibus daemon
 # run udiskie -s &                # auto mount USB
-run greenclip daemon &          # run clipboard server daemon
-# run clipmenud &
+# run greenclip daemon &          # run clipboard server daemon
+run clipmenud &
 
 #autostart="mpd xcompmgr dunst unclutter pipewire"
 

@@ -44,6 +44,11 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # export GOPATH="$HOME/go"
+export PATH="$PATH:$HOME/go/bin"
+
+export PATH="$PATH:$HOME/bin"
+export PATH=~/bin:$PATH
+
 # export GPG_TTY=$(tty)
 # export SYSTEMD_LESS='FRXMK'
 
@@ -70,7 +75,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export npm_config_prefix="$HOME/.local"
 
 # Start graphical server on tty1 if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec startx "$XINITRC"
+#[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec startx "$XINITRC"
 . "$HOME/.cargo/env"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -103,4 +108,4 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

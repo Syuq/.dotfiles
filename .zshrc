@@ -70,7 +70,6 @@ plugins=(
          zsh-syntax-highlighting
          history-substring-search
          fzf
-         autojump
          copypath
          copyfile
          emoji
@@ -91,13 +90,13 @@ alias grep="grep --color=auto"
 alias gsync="git checkout master && git fetch upstream && git rebase upstream/master && git push"
 alias glog='git log --graph --oneline --decorate --all'
 
-alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 20"
+alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 30"
 alias packinstalled="comm -12 <(grep -Poe '\[ALPM\] installed \K\S*' /var/log/pacman.log | sort | uniq) <(pacman -Qeqn | sort)"
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pacman-contrib='pacman -Ql pacman pacman-contrib | grep -E 'bin/.+''
 alias pacfzf='pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse'
-alias neovide='neovide --nofork'
+alias nv='neovide --nofork --multigrid'
 alias bc='bc -l ~/.bcrc'
 
 # npm shortcuts that only list top-level modules
@@ -135,7 +134,8 @@ type -a nvm > /dev/null && load-nvmrc
 
 
 #zsh syntax highlighting dracula 
-source /home/tat/.oh-my-zsh/custom/themes/dracu-syntax-highlighting.zsh 
+#source /home/tat/.oh-my-zsh/custom/themes/dracu-syntax-highlighting.zsh 
+source /home/tat/.oh-my-zsh/custom/themes/zsh-syntax-highlighting/zsh-syntax-highlighting.sh 
 
 eval "$(starship init zsh)"
 eval $(thefuck --alias)
@@ -157,3 +157,6 @@ random_emoji fruits
 # Bun
 export BUN_INSTALL="/home/tat/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+#Broot
+source /home/tat/.config/broot/launcher/bash/br

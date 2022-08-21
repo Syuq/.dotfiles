@@ -23,6 +23,7 @@ Xft.lcdfilter: lcddefault
 *fading:                          8
 *fadeColor:                       black
 *cursorColor:                     #E4E4E4	
+!!*cursorColor:                     #6df702	
 *pointerColorBackground:          #2B2C2B
 *pointerColorForeground:          #16A085
 
@@ -32,7 +33,7 @@ st.alphaOffset: 0.3
 st.font: JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
 
 ! terminal padding color
-*borderColor: #24283b
+! *borderColor: #24283b
 
 /* !! black dark/light */
 /* *color0:                          #282a36 */
@@ -86,5 +87,5 @@ st.font: JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
 /* *color14: #7dcfff */
 /* *color15: #c0caf5 */
 
-/* Xcursor.theme: xcursor-breeze */
+/* Xcursor.theme: xcursor-breeze
 /* Xcursor.size:                     0 */
