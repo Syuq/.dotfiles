@@ -44,6 +44,11 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # export GOPATH="$HOME/go"
+export GOPATH=$HOME/go:$HOME/projects
+export GOROOT="/usr/lib/go"
+export GOBIN=$HOME/go/bin
+export GO111MODULE="on"
+
 export PATH="$PATH:$HOME/go/bin"
 
 export PATH="$PATH:$HOME/bin"
