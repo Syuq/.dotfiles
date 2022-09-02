@@ -105,4 +105,10 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
+" Remember cursor position
+"augroup vimrc-remember-cursor-position
+"    autocmd!
+"    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+"augroup END
+
 " vim: set foldmethod=marker foldlevel=0:

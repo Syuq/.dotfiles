@@ -144,7 +144,6 @@ ex ()
 #set -o vi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash 
-. "$HOME/.cargo/env"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
