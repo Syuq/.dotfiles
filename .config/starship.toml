@@ -58,7 +58,7 @@ disabled = false
 format = '[\[$time\]]($style) '
 time_format = "%T"
 utc_time_offset = "+7"
-time_range = "23:30:00-06:30:00"
+time_range = "24:00:00-06:30:00"
 
 [jobs]
 symbol = "⭐"

@@ -20,12 +20,12 @@ Xft.lcdfilter: lcddefault
 
 /* *background: #24283b */
 /* *foreground: #c0caf5 */
-*fading:                          8
-*fadeColor:                       black
-*cursorColor:                     #E4E4E4	
+st.fading:                          8
+st.fadeColor:                       black
+st.cursorColor:                     #E4E4E4	
 !!*cursorColor:                     #6df702	
-*pointerColorBackground:          #2B2C2B
-*pointerColorForeground:          #16A085
+st.pointerColorBackground:          #2B2C2B
+st.pointerColorForeground:          #16A085
 
 !! Transparency (0-1):
 st.alpha: 0.9

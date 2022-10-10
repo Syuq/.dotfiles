@@ -113,3 +113,12 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 
 # brew
 #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# rust
+export PATH="$PATH:$HOME/.cargo/bin"
+
+# java 
+export PATH="$JAVA_HOME/bin:$PATH"
+
+NVIM_BEGINNER=~/.config/nvim-beginner
+export NVIM_BEGINNER

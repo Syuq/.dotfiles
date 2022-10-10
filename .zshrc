@@ -90,7 +90,7 @@ alias grep="grep --color=auto"
 alias gsync="git checkout master && git fetch upstream && git rebase upstream/master && git push"
 alias glog='git log --graph --oneline --decorate --all'
 
-alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 30"
+alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 40"
 alias packinstalled="comm -12 <(grep -Poe '\[ALPM\] installed \K\S*' /var/log/pacman.log | sort | uniq) <(pacman -Qeqn | sort)"
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -107,6 +107,7 @@ alias lg="npm list -g --depth=0 2>/dev/null"
 alias gg="git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
 alias ggr="git log --reverse --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
 
+alias nvb='XDG_DATA_HOME=$NVIM_BEGINNER/share XDG_CACHE_HOME=$NVIM_BEGINNER XDG_CONFIG_HOME=$NVIM_BEGINNER nvim'
 # alias pacsize="LC_ALL=C pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h"
 
 # Call `nvm use` automatically in a directory with a `.nvmrc` file
