@@ -119,6 +119,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 # java 
 export PATH="$JAVA_HOME/bin:$PATH"
+export CLASSPATH=$CLASSPATH:/usr/share/tomcat9/lib/servlet-api.jar
 
-NVIM_BEGINNER=~/.config/nvim-beginner
-export NVIM_BEGINNER
+#NVIM_BEGINNER=~/.config/nvim-beginner
+#export NVIM_BEGINNER

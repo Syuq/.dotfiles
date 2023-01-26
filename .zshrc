@@ -21,6 +21,10 @@ function ordinal () {
   esac
 }
 
+if [ $(date +%j) = 256 ]; then
+  echo "CODING DAY 🐧"
+fi
+
 echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
 
 cal -3
@@ -151,6 +155,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 . ~/.oh-my-zsh/custom/plugins/z/z.sh
 
 random_emoji fruits
+
+# Rainbows and unicorns!
+fortune | cowsay | lolcat
 
 # bun completions
 [ -s "/home/tat/.bun/_bun" ] && source "/home/tat/.bun/_bun"
