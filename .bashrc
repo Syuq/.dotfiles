@@ -1,4 +1,4 @@
-#
+#!/usr/bin/bash
 # ~/.bashrc
  # _____  _  _____             _
 # |_   _|/ \|_   _|  __      _(_)_ __   ___
@@ -151,3 +151,5 @@ ex ()
 export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -n "$PS1" ] && source ~/.bash_profile;
+
+source /home/tat/.config/broot/launcher/bash/br

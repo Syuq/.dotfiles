@@ -55,3 +55,4 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # [[ -f ~/.bashrc ]] && . ~/.bashrc
 # 
+source /home/tat/.config/broot/launcher/bash/br

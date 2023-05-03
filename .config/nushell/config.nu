@@ -644,3 +644,6 @@ let-env config = {
     }
   ]
 }
+
+source /home/tat/.config/broot/launcher/nushell/br
+source ~/.local/share/atuin/init.nu

@@ -11,24 +11,26 @@ selection:
 window:
   opacity: 1.0
   padding:
-    x: 10
-    y: 5
+    x: 5
+    y: 0
   decorations: none
 
 font:
   normal:
-    family: "Hack Nerd Font Mono"
-    style: Regular
-  bold:
-    family: "Hack Nerd Font Mono"
-    style: Bold
-  italic:
-    family: "Hack Nerd Font Mono"
-    style: Italic
-  bold_italic:
-    family: "Hack Nerd Font Mono"
-    style: Bold Italic
+    family: "JetBrains Mono Nerd Font"
+    style: Medium         
+  bold:                    
+    family: "JetBrains Mono Nerd Font"
+    style: Bold            
+  italic:                  
+    family: "JetBrains Mono Nerd Font"
+    style: MediumItalic          
+  bold_italic:             
+    family: "JetBrains Mono Nerd Font"
+    style: BoldItalic
   size: 9.0
+  offset:
+    y: 1
   # use_thin_strokes: true
 
 draw_bold_text_with_bright_colors: true
@@ -67,15 +69,21 @@ colors:
     - { index: 17, color: '0xdb4b4b' }
 
 cursor:
-  style: Block
+  style:
+    blinking: Always
   unfocused_hollow: true
 
 key_bindings:
-  - { key: N,      mods: Command,         action: SpawnNewInstance }
-  - { key: Q,      mods: Command,         action: Quit             }
-  - { key: W,      mods: Command,         action: Quit             }
+  - { key: Escape, mods: Control,                         action: ToggleViMode   }
+  - { key: I,                           mode: Vi|~Search, action: ToggleViMode   }
+  - { key: 7,      mods: Shift,         mode: Vi|~Search, action: FirstOccupied  }
+  - { key: 5,      mods: Shift,         mode: Vi|~Search, action: Last           }
+  - { key: 6,      mods: Shift,         mode: Vi|~Search, action: Bracket        }
+  - { key: 53,     mods: Shift,         mode: Vi|~Search, action: SearchBackward }
+  - { key: N,      mods: Control,       mode: Vi,         action: SearchEnd      }
+  - { key: N,      mods: Control,                         action: SpawnNewInstance }
+  - { key: N,      mods: Control|Shift, mode: Vi,         action: SearchStart    }
   - { key: F,      mods: Command|Control, action: ToggleFullscreen }
-
 # Nord Theme
 # colors:
 #   primary:

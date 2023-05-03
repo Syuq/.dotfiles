@@ -115,6 +115,8 @@ if status is-interactive
   # https://github.com/starship/starship#fish
   starship init fish | source
   zoxide init fish | source
+  atuin init fish | source
+  navi widget fish | source
   # z.lua
   # lua $HOME/bin/z --init fish | source
 

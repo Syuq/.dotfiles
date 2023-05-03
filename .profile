@@ -40,8 +40,12 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
 # export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_COMMAND='ag --nogroup --column --color ^'
 export FZF_DEFAULT_OPTS='--history-size=50000 --height 40% --reverse --border'
-export FZF_DEFAULT_COMMAND='fd --type f'
+# export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_BASE=/usr/bin/fzf
+
+# cheat
+export CHEAT_USE_FZF=true
 
 # export GOPATH="$HOME/go"
 export GOPATH=$HOME/go:$HOME/projects
@@ -77,7 +81,8 @@ export JAVA_HOME="$(dirname $(dirname $(realpath $(which javac))))"
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 
 # Node
-export npm_config_prefix="$HOME/.local"
+# export npm_config_prefix="$HOME/.local"
+export PATH=~/.npm-global/bin:$PATH
 
 # Start graphical server on tty1 if not already running.
 #[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec startx "$XINITRC"
@@ -123,3 +128,4 @@ export CLASSPATH=$CLASSPATH:/usr/share/tomcat9/lib/servlet-api.jar
 
 #NVIM_BEGINNER=~/.config/nvim-beginner
 #export NVIM_BEGINNER
+

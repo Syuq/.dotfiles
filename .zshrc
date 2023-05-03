@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
  # _____  _  _____             _
 # |_   _|/ \|_   _|  __      _(_)_ __   ___
  #  | | / _ \ | |____\ \ /\ / | | '_ \ / _ \
@@ -71,8 +72,14 @@ plugins=(
          web-search
          # vi-mode
          zsh-autosuggestions
+         node
          zsh-syntax-highlighting
          history-substring-search
+         command-not-found
+         colored-man-pages
+         emotty
+         emoji-clock
+         man
          fzf
          copypath
          copyfile
@@ -106,6 +113,14 @@ alias bc='bc -l ~/.bcrc'
 # npm shortcuts that only list top-level modules
 alias l="yarn list --depth=0 2>/dev/null"
 alias lg="npm list -g --depth=0 2>/dev/null"
+
+# navi
+navibestmatch() {
+    navi --query "$1" --best-match
+}
+
+alias el="navibestmatch 'This is one command'"
+alias ef="navibestmatch 'This is another command'"
 
 # git shortcuts
 alias gg="git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
@@ -144,6 +159,9 @@ source /home/tat/.oh-my-zsh/custom/themes/zsh-syntax-highlighting/zsh-syntax-hig
 
 eval "$(starship init zsh)"
 eval $(thefuck --alias)
+eval "$(zoxide init zsh)"
+eval "$(navi widget zsh)"
+eval "$(atuin init zsh)"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
@@ -152,12 +170,15 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-. ~/.oh-my-zsh/custom/plugins/z/z.sh
+# . ~/.oh-my-zsh/custom/plugins/z/z.sh
 
 random_emoji fruits
 
 # Rainbows and unicorns!
 fortune | cowsay | lolcat
+
+# Displays current time
+emoji-clock
 
 # bun completions
 [ -s "/home/tat/.bun/_bun" ] && source "/home/tat/.bun/_bun"
@@ -168,3 +189,15 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 #Broot
 source /home/tat/.config/broot/launcher/bash/br
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# nvm
+source /usr/share/nvm/init-nvm.sh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/path.zsh.inc' ]; then . '/home/tat/Templates/test/test/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc'; fi

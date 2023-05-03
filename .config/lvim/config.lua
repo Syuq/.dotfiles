@@ -5,11 +5,15 @@ lvim.colorscheme = "tokyonight"
 vim.opt.gdefault = true
 vim.opt.ignorecase = true
 vim.opt.linebreak = true
+vim.opt.relativenumber = true
 
 vim.api.nvim_set_keymap("n", ";", ":", { noremap = true })
 vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
 vim.api.nvim_set_keymap("v", ";", ":", { noremap = true })
 
+--lvim.builtin.lualine.options.icons_enabled = false
+--lvim.builtin.nvimtree.show_icons = ""
+lvim.use_icons = false
 
 -- vim.api.nvim_set_keymap("i", "jk", "<esc>", { noremap = true })
 
@@ -113,6 +117,9 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- generic LSP settings
+
+-- Angular
+require("lvim.lsp.manager").setup("angularls")
 
 -- ---@usage disable automatic installation of servers
 -- lvim.lsp.automatic_servers_installation = false
