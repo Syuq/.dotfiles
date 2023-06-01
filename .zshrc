@@ -78,7 +78,7 @@ plugins=(
          command-not-found
          colored-man-pages
          emotty
-         emoji-clock
+         # emoji-clock
          man
          fzf
          copypath
@@ -91,43 +91,6 @@ source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#000000,bold"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-alias webcam="mpv --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)"
-alias ls='ls --color=auto'
-alias ll="exa --icons --git -la"
-# alias tree="exa --icons --tree"
-#alias ping="prettyping"
-alias ip="ip -color=auto"
-alias grep="grep --color=auto"
-alias gsync="git checkout master && git fetch upstream && git rebase upstream/master && git push"
-alias glog='git log --graph --oneline --decorate --all'
-
-alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 40"
-alias packinstalled="comm -12 <(grep -Poe '\[ALPM\] installed \K\S*' /var/log/pacman.log | sort | uniq) <(pacman -Qeqn | sort)"
-
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias pacman-contrib='pacman -Ql pacman pacman-contrib | grep -E 'bin/.+''
-alias pacfzf='pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse'
-alias nv='neovide --nofork --multigrid'
-alias bc='bc -l ~/.bcrc'
-
-# npm shortcuts that only list top-level modules
-alias l="yarn list --depth=0 2>/dev/null"
-alias lg="npm list -g --depth=0 2>/dev/null"
-
-# navi
-navibestmatch() {
-    navi --query "$1" --best-match
-}
-
-alias el="navibestmatch 'This is one command'"
-alias ef="navibestmatch 'This is another command'"
-
-# git shortcuts
-alias gg="git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
-alias ggr="git log --reverse --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
-
-alias nvb='XDG_DATA_HOME=$NVIM_BEGINNER/share XDG_CACHE_HOME=$NVIM_BEGINNER XDG_CONFIG_HOME=$NVIM_BEGINNER nvim'
-# alias pacsize="LC_ALL=C pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h"
 
 # Call `nvm use` automatically in a directory with a `.nvmrc` file
 autoload -U add-zsh-hook
@@ -157,11 +120,14 @@ type -a nvm > /dev/null && load-nvmrc
 #source /home/tat/.oh-my-zsh/custom/themes/dracu-syntax-highlighting.zsh 
 source /home/tat/.oh-my-zsh/custom/themes/zsh-syntax-highlighting/zsh-syntax-highlighting.sh 
 
+#alias
+source $HOME/.aliases
+
 eval "$(starship init zsh)"
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(navi widget zsh)"
-eval "$(atuin init zsh)"
+# eval "$(atuin init zsh)"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
@@ -178,7 +144,7 @@ random_emoji fruits
 fortune | cowsay | lolcat
 
 # Displays current time
-emoji-clock
+# emoji-clock
 
 # bun completions
 [ -s "/home/tat/.bun/_bun" ] && source "/home/tat/.bun/_bun"
@@ -201,3 +167,6 @@ if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/path.zsh.inc' ]; then . 
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc'; fi
+
+#Coin
+# coinmon -f shib
