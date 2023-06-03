@@ -1,0 +1,13 @@
+/home/tat/.nvm/versions/node/v16.20.0/lib
+├── @angular/cli@16.0.2
+├── @nestjs/cli@9.4.2
+├── coinmon@0.0.28
+├── corepack@0.17.2
+├── eslint_d@12.2.1
+├── json-server@0.17.3
+├── neovim@4.10.1
+├── npm@9.6.6
+├── nx@16.1.4
+├── prettier@2.8.8
+└── webpack@5.82.1
+
