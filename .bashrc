@@ -153,3 +153,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [ -n "$PS1" ] && source ~/.bash_profile;
 
 source /home/tat/.config/broot/launcher/bash/br
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"
