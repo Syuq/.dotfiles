@@ -144,6 +144,14 @@
 
 	# Show the user email for the current repository.
 	whoami = config user.email
+
+  # Works for main or master or other
+  main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+  remotesh = remote set-head origin --auto
+  com = "!f(){ git checkout $(git main-branch) $@;}; f"
+  upm = "!f(){ git pull --rebase --autostash origin $(git main-branch) $@;}; f"
+  rebasem = "!f(){ git rebase -i --autosquash origin/$(git main-branch) --no-verify $@;}; f"
+
 [help]
   autocorrect = 1
 

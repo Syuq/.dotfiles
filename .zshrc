@@ -127,7 +127,7 @@ eval "$(starship init zsh)"
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(navi widget zsh)"
-# eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-ctrl-r)"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
@@ -170,3 +170,4 @@ if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc' ]; t
 
 #Coin
 # coinmon -f shib
+

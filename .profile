@@ -23,7 +23,9 @@ export LESS='-R --use-color -Dd+g$Du+b'
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-# export PATH="$PATH:/home/tat/flutter/bin"
+
+# flutter
+export PATH="$PATH:/home/tat/development/flutter/bin"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -46,6 +48,7 @@ export FZF_BASE=/usr/bin/fzf
 
 # cheat
 export CHEAT_USE_FZF=true
+export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
 
 # export GOPATH="$HOME/go"
 export GOPATH=$HOME/go:$HOME/projects

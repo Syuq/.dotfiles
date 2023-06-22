@@ -153,7 +153,7 @@ alias packinstalled="comm -12 <(grep -Poe '\[ALPM\] installed \K\S*' /var/log/pa
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pacman-contrib='pacman -Ql pacman pacman-contrib | grep -E 'bin/.+''
 alias pacfzf='pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse'
-alias nv='neovide --nofork --multigrid'
+alias nv='neovide --nofork --multigrid --novsync'
 alias bc='bc -l ~/.bcrc'
 
 # npm shortcuts that only list top-level modules
