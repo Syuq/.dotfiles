@@ -31,9 +31,28 @@ export PATH="$PATH:/home/tat/development/flutter/bin"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/var"
 
 # X11
 export XINITRC="$HOME/.xinitrc"
+
+# Env
+# export GOPATH="$XDG_DATA_HOME/go"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
+# PATH
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
+PathAppend() { [ -d "$1" ] && PATH="$PATH:$1"; }
+
+## Go
+PathAppend "$XDG_DATA_HOME/go/bin"
+PathAppend "/usr/local/go/bin"
+# Rust
+PathAppend "$CARGO_HOME/bin"
+# Lua
+PathAppend "$XDG_DATA_HOME/.luarocks/bin"
+unset PathAppend
 
 # Other program settings:
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
