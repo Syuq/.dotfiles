@@ -7,3 +7,5 @@ name = "typescript"
 auto-format = true
 config = { format = { "semicolons" = "insert", "insertSpaceBeforeFunctionParenthesis" = true } }
 
+[language-server.rust-analyzer.config.check]
+command = "clippy"
