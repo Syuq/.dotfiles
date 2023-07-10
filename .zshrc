@@ -81,6 +81,7 @@ plugins=(
          # emoji-clock
          man
          fzf
+         fzf-tab
          copypath
          copyfile
          emoji
@@ -170,4 +171,11 @@ if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc' ]; t
 
 #Coin
 # coinmon -f shib
+
+# git-fuzzy
+export PATH="/home/tat/.oh-my-zsh/custom/plugins/git-fuzzy/bin:$PATH"
+
+# fzf-tab
+export GF_BAT_STYLE=changes
+export GF_BAT_THEME=zenburn
 
