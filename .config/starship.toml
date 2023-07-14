@@ -1,5 +1,6 @@
 # Inserts a blank line between shell prompts
 add_newline = false
+continuation_prompt = '🥕🥕'
 
 # Replace the "" symbol in the prompt with ▶"➜ "   
 [character]                            # The name of the module we are configuring is "character"
@@ -16,42 +17,104 @@ show_always = true
 
 [hostname]
 ssh_only = true
-format =  "[$hostname](bold blue) "
-trim_at = ".companyname.com"
+ssh_symbol = '🌐 '
+# format =  "[$hostname](bold blue) "
+format = '[$ssh_symbol$hostname]($style) in '
+style = 'bold dimmed green'
+trim_at = "."
+disabled = false
+
+[localip]
+ssh_only = true
+format = '@[$localipv4](bold red) '
+disabled = false
+
+[shell]
+fish_indicator = '🐟 '
+zsh_indicator = '🌿'
+bash_indicator = 'sh'
+nu_indicator = 'nu'
+unknown_indicator = 'mystery shell'
+style = 'cyan bold'
+format = '[$indicator]($style) '
+disabled = false
+
+[sudo]
+style = 'bold green'
+symbol = '💻 '
+format = '[as $symbol]($style)'
+disabled = false
+
+[status]
+style = 'fg:green'
+# style = 'bold green'
+symbol = '🔴 '
+success_symbol = '🟢'
+not_found_symbol = '🔍'
+sigint_symbol = '🧱'
+signal_symbol = '⚡'
+recognize_signal_code = true
+pipestatus = true
+pipestatus_separator = '|'
+pipestatus_format = '\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)'
+# format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
+format = '[$symbol$status]($style) '
+map_symbol = true
 disabled = false
 
 [package]
 format = "via [📦 $version](208 bold) "
 
+[nodejs]
+format = 'via [🪨 $version](bold green) '
+# format = 'via [ $version](bold green) '
+version_format = 'v${raw}'
+symbol = ' '
+detect_extensions = ['js', 'mjs', 'cjs', 'ts', 'mts', 'cts']
+detect_files = ['package.json', '.node-version']
+detect_folders = ['node_modules']
+style = 'bold green'
+not_capable_style = 'bold red'
+
 [git_branch]
+always_show_remote = true
 symbol = " "
 truncation_length = 4
 truncation_symbol = ""
+# ignore_branches = ['master', 'main']
+format = 'on [$symbol$branch(:$remote_branch)]($style) '
 
 [git_commit]
-commit_hash_length = 4
+commit_hash_length = 7
+style = 'bold green'
+format = '[\($hash$tag\)]($style) '
 tag_symbol = " "
 
 [git_state]
 format = '[\($state( $progress_current of $progress_total)\)]($style) '
-cherry_pick = "[ PICKING](bold red)"
+cherry_pick = "[🍒 PICKING](bold red)"
 
 [git_metrics]
+disabled = false
 added_style = "bold blue"
 format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
 
 [git_status]
 conflicted = "🏳 "
-ahead = " "
-behind = "😰"
-diverged = " "
-up_to_date = ""
-untracked = "?"
-stashed = " "
-modified = "!"
+# ahead = " "
+# behind = "😰"
+# diverged = " "
+up_to_date = '🐞'
+untracked = '🤷'
+stashed = '📦'
+modified = '📝'
 staged = '[++\($count\)](green)'
-renamed = "» "
+renamed = '👅'
 deleted = "🗑 "
+
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
 
 [time]
 disabled = false
