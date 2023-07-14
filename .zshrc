@@ -121,14 +121,18 @@ type -a nvm > /dev/null && load-nvmrc
 #source /home/tat/.oh-my-zsh/custom/themes/dracu-syntax-highlighting.zsh 
 source /home/tat/.oh-my-zsh/custom/themes/zsh-syntax-highlighting/zsh-syntax-highlighting.sh 
 
-#alias
+# alias
 source $HOME/.aliases
+
+# env
+source $HOME/.zshenv
 
 eval "$(starship init zsh)"
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(navi widget zsh)"
 eval "$(atuin init zsh --disable-ctrl-r)"
+eval "$(lesspipe)"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
@@ -137,8 +141,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
-# export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # . ~/.oh-my-zsh/custom/plugins/z/z.sh

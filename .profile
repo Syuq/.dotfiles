@@ -20,6 +20,7 @@ export PAGER="less"
 export BAT_THEME="Nord"
 # export LESS='-iMRS -x2'
 export LESS='-R --use-color -Dd+g$Du+b'
+export LESSOPEN='|~/.lessfilter %s'
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
