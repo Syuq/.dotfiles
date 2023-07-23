@@ -31,7 +31,7 @@ disabled = false
 
 [shell]
 fish_indicator = '🐟 '
-zsh_indicator = '🌿'
+zsh_indicator = '🌴'
 bash_indicator = 'sh'
 nu_indicator = 'nu'
 unknown_indicator = 'mystery shell'
@@ -48,8 +48,8 @@ disabled = false
 [status]
 style = 'fg:green'
 # style = 'bold green'
-symbol = '🔴 '
-success_symbol = '🟢'
+# symbol = '🔴 '
+# success_symbol = '🟢'
 not_found_symbol = '🔍'
 sigint_symbol = '🧱'
 signal_symbol = '⚡'

@@ -13,17 +13,39 @@
 # Default programs:
 export EDITOR=/usr/bin/nvim
 export TERMINAL=/usr/local/bin/st
+export TERMINAL_PROG="st"
 export BROWSER=/usr/bin/brave
 export DIFFPROG="nvim -d"
 export VISUAL=/usr/bin/nvim
-export PAGER="less"
+# export PAGER="less"
+export PAGER="most"
 export BAT_THEME="Nord"
 # export LESS='-iMRS -x2'
 export LESS='-R --use-color -Dd+g$Du+b'
-export LESSOPEN='|~/.lessfilter %s'
+# export LESSOPEN='|~/.lessfilter %s'
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+# less
+# export LESS=-R
+export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
+export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
+export LESS_TERMCAP_me="$(printf '%b' '[0m')"
+export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
+export LESS_TERMCAP_se="$(printf '%b' '[0m')"
+export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
+export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
+# export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 
 # flutter
 export PATH="$PATH:/home/tat/development/flutter/bin"
@@ -84,6 +106,9 @@ export PATH=~/bin:$PATH
 # export GPG_TTY=$(tty)
 # export SYSTEMD_LESS='FRXMK'
 
+# sqllite
+export SQLITE_HISTORY="$XDG_DATA_HOME/sqlite_history"
+
 #NNN
 export NNN_OPTS="ErxH"
 export NNN_FIFO='/tmp/nnn.fifo'
@@ -125,7 +150,6 @@ export BUNDLER_EDITOR=nvim
 # Set ipdb as the default Python debugger
 export PYTHONBREAKPOINT=ipdb.set_trace
 
-
 # # Load rbenv if installed (to manage your Ruby versions)
 # export PATH="${HOME}/.rbenv/bin:${PATH}" # Needed for Linux/WSL
 # type -a rbenv > /dev/null && eval "$(rbenv init -)"
@@ -152,3 +176,6 @@ export CLASSPATH=$CLASSPATH:/usr/share/tomcat9/lib/servlet-api.jar
 #NVIM_BEGINNER=~/.config/nvim-beginner
 #export NVIM_BEGINNER
 
+# Other program settings:
+export DICS="/usr/share/stardict/dic/"
+export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.

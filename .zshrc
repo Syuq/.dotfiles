@@ -132,7 +132,7 @@ eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(navi widget zsh)"
 eval "$(atuin init zsh --disable-ctrl-r)"
-eval "$(lesspipe)"
+eval "$(lesspipe.sh)"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
