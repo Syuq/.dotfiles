@@ -173,8 +173,8 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$JAVA_HOME/bin:$PATH"
 export CLASSPATH=$CLASSPATH:/usr/share/tomcat9/lib/servlet-api.jar
 
-#NVIM_BEGINNER=~/.config/nvim-beginner
-#export NVIM_BEGINNER
+NVIM_RAYX=~/.config/nvim-rayx
+export NVIM_RAYX
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
