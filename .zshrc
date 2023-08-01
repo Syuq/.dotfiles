@@ -28,14 +28,12 @@ fi
 
 echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
 
-cal -3
 echo "${normal}🌴" 
 # echo ${(%):-'%F{yellow}%B%b%f'}
 echo "${Blue}${bold}$(sb-clock)"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-mkfile() { mkdir -p "$(dirname "$1")" && touch "$1" ;  }
 # Path to your oh-my-zsh installation.
 export ZSH="/home/tat/.oh-my-zsh"
 
@@ -46,6 +44,7 @@ export ZSH="/home/tat/.oh-my-zsh"
 # VI_MODE_SET_CURSOR=true
 
 # Case-sensitive completion must be off. _ and - will be interchangeable.
+CASE_SENSITIVE=true
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -72,12 +71,14 @@ plugins=(
          web-search
          # vi-mode
          zsh-autosuggestions
+         ripgrep
          node
          zsh-syntax-highlighting
          history-substring-search
          command-not-found
          colored-man-pages
          emotty
+         pass
          # emoji-clock
          man
          fzf
@@ -92,6 +93,7 @@ source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#000000,bold"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
+zstyle ':omz:update' frequency 7
 
 # Call `nvm use` automatically in a directory with a `.nvmrc` file
 autoload -U add-zsh-hook
@@ -149,7 +151,15 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 random_emoji fruits
 
 # Rainbows and unicorns!
-fortune | cowsay | lolcat
+# fortune | cowsay | lolcat
+
+if [[ -n ${DISPLAY:+set} ]] && whence xrdb >/dev/null; then
+  if xrdb -query | grep -q '^pietrodito\.session\.ran-fortune:.*true'; then
+    cal -3
+    fortune | cowsay | lolcat
+    xrdb -merge <<<'pietrodito.session.ran-fortune: true'
+  fi
+fi
 
 # Displays current time
 # emoji-clock
