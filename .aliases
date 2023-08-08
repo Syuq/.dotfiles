@@ -14,6 +14,29 @@ se() {
 
 touch2() { mkdir -p "$(dirname "$1")" && touch "$1" ; }
 
+###
+# GIT STUFF
+
+function clone() {
+    git clone --depth=1 $1
+    cd $(basename ${1%.*})
+    yarn install
+}
+alias push="git push"
+
+# Undo a `git push`
+alias undopush="git push -f origin HEAD^:master"
+
+# git root
+alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
+
+
+alias gitmainormaster="git branch --format '%(refname:short)' --sort=-committerdate --list master main | head -n1"
+alias main="git checkout \$(gitmainormaster)"
+alias master="main"
+
+alias dotfiles="nvim ~/.dotfiles" # open dotfiles for viewing
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 # alias ..="cd .."
 # alias ...="cd ../.."
@@ -188,8 +211,9 @@ alias ef="navibestmatch 'This is another command'"
 # git shortcuts
 alias \
   gg="git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short" \
-  ggr="git log --reverse --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short" \
-  git-multi="for x in $(find . -type d -name ".git"); do pushd $(dirname $x); pwd; git status; popd; done"
+  ggr="git log --reverse --pretty=format:'%C(bold red)%h%Creset -%C(bold yellow)%d%Creset %s %C(bold green)(%cr) %C(bold blue)<%an>%Creset %C(yellow)%ad%Creset' --abbrev-commit --date=short"
+
+# alias git-multi="for x in $(find . -type d -name ".git"); do pushd $(dirname $x); pwd; git status; popd; done"
 
 # neovim rayx
 alias nvr='XDG_DATA_HOME=$NVIM_RAYX/share XDG_CACHE_HOME=$NVIM_RAYX XDG_CONFIG_HOME=$NVIM_RAYX nvim'

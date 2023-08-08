@@ -26,7 +26,8 @@ if [ $(date +%j) = 256 ]; then
   echo "CODING DAY 🐧"
 fi
 
-echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
+[[ "$(pidof zsh)" == *' '* ]] || echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
+[[ "$(pidof zsh)" == *' '* ]] || cal -3
 
 echo "${normal}🌴" 
 # echo ${(%):-'%F{yellow}%B%b%f'}
@@ -148,18 +149,21 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # . ~/.oh-my-zsh/custom/plugins/z/z.sh
 
-random_emoji fruits
-
 # Rainbows and unicorns!
 # fortune | cowsay | lolcat
+# if [ -x /usr/bin/cowsay -a -x /usr/bin/fortune ]; then
+#     fortune | cowsay
+# fi
 
 if [[ -n ${DISPLAY:+set} ]] && whence xrdb >/dev/null; then
   if xrdb -query | grep -q '^pietrodito\.session\.ran-fortune:.*true'; then
-    cal -3
     fortune | cowsay | lolcat
     xrdb -merge <<<'pietrodito.session.ran-fortune: true'
   fi
 fi
+
+[[ "$(pidof zsh)" == *' '* ]] || {
+  fortune | cowsay | lolcat }
 
 # Displays current time
 # emoji-clock
@@ -189,6 +193,8 @@ if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc' ]; t
 #Coin
 # coinmon -f shib
 
+[[ "$(pidof zsh)" == *' '* ]] || random_emoji fruits
+
 # git-fuzzy
 export PATH="/home/tat/.oh-my-zsh/custom/plugins/git-fuzzy/bin:$PATH"
 
@@ -206,3 +212,11 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
+# pass
+compdef _pass workpass
+zstyle ':completion::complete:workpass::' prefix "$HOME/work/pass"
+workpass() {
+  PASSWORD_STORE_DIR=$HOME/work/pass pass $@
+}
+
+trap 'cowsay "Have a nice day!"; sleep 1' EXIT
