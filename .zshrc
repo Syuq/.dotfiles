@@ -146,6 +146,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# set -gx FZF_ALT_C_COMMAND "xclip -selection clipboard"
+
 
 # . ~/.oh-my-zsh/custom/plugins/z/z.sh
 
