@@ -156,3 +156,6 @@ source /home/tat/.config/broot/launcher/bash/br
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
+
+# cheat.sh
+. ~/.bash.d/cht.sh
