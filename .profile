@@ -17,8 +17,8 @@ export TERMINAL_PROG="st"
 export BROWSER=/usr/bin/brave
 export DIFFPROG="nvim -d"
 export VISUAL=/usr/bin/nvim
-# export PAGER="less"
-export PAGER="most"
+export PAGER="less"
+# export PAGER="most"
 export BAT_THEME="Nord"
 # export LESS='-iMRS -x2'
 export LESS='-R --use-color -Dd+g$Du+b'
@@ -64,6 +64,8 @@ export XINITRC="$HOME/.xinitrc"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
+export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+
 # PATH
 [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 PathAppend() { [ -d "$1" ] && PATH="$PATH:$1"; }
@@ -92,8 +94,8 @@ export FZF_BASE=/usr/bin/fzf
 export CHEAT_USE_FZF=true
 export CHEAT_CONFIG_PATH="~/.config/cheat/conf.yml"
 
-# export GOPATH="$HOME/go"
-export GOPATH=$HOME/go:$HOME/projects
+export GOPATH="$HOME/go"
+# export GOPATH=$HOME/go:$HOME/projects
 export GOROOT="/usr/lib/go"
 export GOBIN=$HOME/go/bin
 export GO111MODULE="on"
