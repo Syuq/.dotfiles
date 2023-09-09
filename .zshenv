@@ -1,5 +1,6 @@
 export STARSHIP_CONFIG=~/.config/starship.toml
 export STARSHIP_CACHE=~/.cache/starship/cache
+export CHROME_EXECUTABLE=/usr/bin/brave
 
 # pet
 function prev() {
