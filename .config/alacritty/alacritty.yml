@@ -73,19 +73,25 @@ cursor:
     blinking: Always
   unfocused_hollow: true
 
-#key_bindings:
-#	- { key: V,      mods: Alt,       		action: Paste                        		 }
-#  - { key: C,      mods: Alt,           action: Copy                         		 }
-#  - { key: Escape, mods: Control,                         action: ToggleViMode   }
-#  - { key: I,                           mode: Vi|~Search, action: ToggleViMode   }
-#  - { key: 7,      mods: Shift,         mode: Vi|~Search, action: FirstOccupied  }
-#  - { key: 5,      mods: Shift,         mode: Vi|~Search, action: Last           }
-#  - { key: 6,      mods: Shift,         mode: Vi|~Search, action: Bracket        }
-#  - { key: 53,     mods: Shift,         mode: Vi|~Search, action: SearchBackward }
-#  - { key: N,      mods: Control,       mode: Vi,         action: SearchEnd      }
-# - { key: N,      mods: Control,                         action: SpawnNewInstance }
-#  - { key: N,      mods: Control|Shift, mode: Vi,         action: SearchStart    }
-# - { key: F,      mods: Super, action: ToggleFullscreen }
+key_bindings:
+ - { key: V,      mods: Alt,       		                   action: Paste             }
+ - { key: C,      mods: Alt,                             action: Copy              }
+ - { key: U,      mods: Alt,                             action: ScrollPageUp      }
+ - { key: D,      mods: Alt,                             action: ScrollPageDown    }
+ - { key: K,      mods: Alt,                             action: ScrollLineUp      }
+ - { key: J,      mods: Alt,                             action: ScrollLineDown    }
+ - { key: Escape, mods: Control,                         action: ToggleViMode      }
+ - { key: I,                           mode: Vi|~Search, action: ToggleViMode      }
+ - { key: 7,      mods: Shift,         mode: Vi|~Search, action: FirstOccupied     }
+ - { key: 5,      mods: Shift,         mode: Vi|~Search, action: Last              }
+ - { key: 6,      mods: Shift,         mode: Vi|~Search, action: Bracket           }
+ - { key: 53,     mods: Shift,         mode: Vi|~Search, action: SearchBackward    }
+ - { key: N,      mods: Control,       mode: Vi,         action: SearchEnd         }
+ - { key: N,      mods: Control,                         action: SpawnNewInstance  }
+ - { key: N,      mods: Control|Shift, mode: Vi,         action: SearchStart       }
+ - { key: F,      mods: Super,                           action: ToggleFullscreen  }
+
+
 # Nord Theme
 # colors:
 #   primary:
@@ -112,4 +118,3 @@ cursor:
 #     magenta: '0xB48EAD'
 #     cyan: '0x8FBCBB'
 #     white: '0xECEFF4'
-
