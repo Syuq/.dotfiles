@@ -188,3 +188,5 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+[interactive]
+	diffFilter = diff-so-fancy --patch
