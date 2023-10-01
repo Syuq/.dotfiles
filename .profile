@@ -185,3 +185,10 @@ export NVIM_RAYX
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
 export MOZ_USE_XINPUT2="1" # Mozilla smooth scrolling/touchpads.
+
+# Ibus
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT4_IM_MODULE=ibus
+export CLUTTER_IM_MODULE=ibus
