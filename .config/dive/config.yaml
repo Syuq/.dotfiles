@@ -33,10 +33,10 @@ keybinding:
 diff:
   # You can change the default files shown in the filetree (right pane). All diff types are shown by default.
   hide:
-    - added
-    - removed
-    - modified
-    - unmodified
+    # - added
+    # - removed
+    # - modified
+    # - unmodified
 
 filetree:
   # The default directory-collapse state
