@@ -27,8 +27,8 @@ keybinding:
   toggle-modified-files: ctrl+m
   toggle-unmodified-files: ctrl+u
   toggle-filetree-attributes: ctrl+b
-  page-up: pgup
-  page-down: pgdn
+  page-up: ctrl+k
+  page-down: ctrl+j 
 
 diff:
   # You can change the default files shown in the filetree (right pane). All diff types are shown by default.
