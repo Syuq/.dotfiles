@@ -1,3 +1,11 @@
+ " create directory if needed
+if !isdirectory($HOME.'/.vim/files') && exists('*mkdir')
+  call mkdir($HOME.'/.vim/files')
+endif
+
+" viminfo files
+set viminfo     ='100,n$HOME/.vim/files/info/viminfo
+ 
 " Use the Solarized Dark theme
 set background=dark
 colorscheme solarized
