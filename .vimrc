@@ -114,10 +114,10 @@ if has("autocmd")
 endif
 
 " Remember cursor position
-"augroup vimrc-remember-cursor-position
-"    autocmd!
-"    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-"augroup END
+augroup vimrc-remember-cursor-position
+    autocmd!
+    autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
 
 " vim: set foldmethod=marker foldlevel=0:
 
