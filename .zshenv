@@ -21,3 +21,4 @@ bindkey '^s' pet-select
 
 # mkfile
 function mkfile() { mkdir -p "$(dirname "$1")" && touch "$1" ;  }
+
