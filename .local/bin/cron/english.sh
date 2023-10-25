@@ -1,1 +1,1 @@
-dunstify 'english!'
+dunstify 'english! && turn off light'
