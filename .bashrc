@@ -159,3 +159,5 @@ eval "$(atuin init bash)"
 
 # cheat.sh
 . ~/.bash.d/cht.sh
+
+PATH=~/.console-ninja/.bin:$PATH
