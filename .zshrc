@@ -64,7 +64,7 @@ ENABLE_CORRECTION="true"
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 plugins=(
          git-flow-completion
@@ -185,6 +185,9 @@ source <(ng completion script)
 
 # nvm
 source /usr/share/nvm/init-nvm.sh
+
+# buildpacks
+. $(pack completion --shell zsh)
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/path.zsh.inc' ]; then . '/home/tat/Templates/test/test/google-cloud-sdk/path.zsh.inc'; fi
