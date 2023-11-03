@@ -69,6 +69,7 @@ ENABLE_CORRECTION="true"
 plugins=(
          git-flow-completion
          sudo
+         urltools
          web-search
          # vi-mode
          zsh-autosuggestions
