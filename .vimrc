@@ -113,6 +113,8 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
+autocmd BufEnter * if &filetype == "go" | setlocal noexpandtab
+
 " Remember cursor position
 augroup vimrc-remember-cursor-position
     autocmd!
