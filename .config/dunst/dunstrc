@@ -7,7 +7,7 @@
     padding = 2
     horizontal_padding = 2
     transparency = 25
-    font = Monospace 12
+    font = Monospace 9
     format = "<b>%s</b>\n%b"
 
 [urgency_low]
@@ -17,7 +17,7 @@
 
 [urgency_normal]
     foreground = "#ebdbb2"
-    background = "#458588"
+    background = "#202330"
     timeout = 5
 
 [urgency_critical]
