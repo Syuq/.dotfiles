@@ -26,6 +26,10 @@ export LESS='-R --use-color -Dd+g$Du+b'
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 
+# Environment-local
+# export CARGO_TARGET_DIR=@{HOME}/.cargo-target
+# export PATH=${PATH}:@{HOME}/.cargo-target/release/
+
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
@@ -63,6 +67,11 @@ export XINITRC="$HOME/.xinitrc"
 # export GOPATH="$XDG_DATA_HOME/go"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
+# Rust stuff
+export CARGO_INCREMENTAL=1
+# export RUSTFLAGS DEFAULT="-C target-cpu=native"
+export RUST_BACKTRACE=1
 
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
 
@@ -131,8 +140,13 @@ export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SO
 # export ANDROID_SDK=$BASE_DIR/android-sdk
 # export ANDROID_PATH=$ANDROID_SDK/tools:$ANDROID_SDK/platform-tools
 
+# JAVA stuff
 export JAVA_HOME="$(dirname $(dirname $(realpath $(which javac))))"
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
+# export _JAVA_OPTIONS DEFAULT="-Dawt.useSystemAAFontSettings=lcd -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+export JAVA_FONTS=/usr/share/fonts/TTF
+export MATLAB_JAVA=/usr/lib/jvm/default-runtime
+export J2D_D3D=false
 
 # Node
 # export npm_config_prefix="$HOME/.local"
