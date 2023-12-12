@@ -246,4 +246,4 @@ alias \
 # alias pacsize="LC_ALL=C pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h"
 #
 # chatGPT prompts
-alias chatgpt-prompts="curl -s https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv | tail +2 | ruby -rcsv -e 'CSV.parse(STDIN.read) {|row| puts row.join("\t")}' | fzf -1 -q "$1" --with-nth 1 --delimiter "\t" --preview 'echo {2} | fold -s -w $(tput cols)' | cut -d"	" -f2"
+# alias chatgpt-prompts="curl -s https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv | tail +2 | ruby -rcsv -e 'CSV.parse(STDIN.read) {|row| puts row.join('\t')}' | fzf -1 -q '$1' --with-nth 1 --delimiter '\t' --preview 'echo {2} | fold -s -w $(tput cols)' | cut -d'	' -f2"
