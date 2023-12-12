@@ -5,6 +5,41 @@ default_language = "go"
 # default style (this includes empty cells)
 default = "none"
 
+style     = colors, { ";", modifier }, [ ";" ] ;
+
+colors    = color, [ ":", color ] ;
+color     = "none"
+          | "reset"
+          | "black"
+          | "white"
+          | "red"
+          | "green"
+          | "yellow"
+          | "blue"
+          | "magenta"
+          | "cyan"
+          | "gray"
+          | "darkgray"
+          | "lightred"
+          | "lightgreen"
+          | "lightyellow"
+          | "lightblue"
+          | "lightmagenta"
+          | "lightcyan"
+          | 6 * hex digit ;
+hex digit = ? hexadecimal digit; 1-9, a-z, and A-Z ? ;
+
+modifier  = "bold"
+          | "crossed_out"
+          | "dim"
+          | "hidden"
+          | "italic"
+          | "rapid_blink"
+          | "slow_blink"
+          | "reversed"
+          | "underlined" ;
+
+
 # title text styling
 title = "white;bold"
 
