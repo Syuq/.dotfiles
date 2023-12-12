@@ -137,6 +137,7 @@ eval "$(zoxide init zsh)"
 eval "$(navi widget zsh)"
 eval "$(atuin init zsh --disable-ctrl-r)"
 eval "$(lesspipe.sh)"
+eval "$(fnm env --use-on-cd)"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
@@ -185,7 +186,7 @@ source /home/tat/.config/broot/launcher/bash/br
 source <(ng completion script)
 
 # nvm
-source /usr/share/nvm/init-nvm.sh
+# source /usr/share/nvm/init-nvm.sh
 
 # buildpacks
 . $(pack completion --shell zsh)
@@ -198,6 +199,9 @@ if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc' ]; t
 
 #Coin
 # coinmon -f shib
+
+# random tip from this document (parses Markdown and extracts an item)
+taocl | lolcat
 
 [[ "$(pidof zsh)" == *' '* ]] || random_emoji fruits
 
@@ -226,3 +230,7 @@ workpass() {
 }
 
 trap 'cowsay "Have a nice day!"; sleep 1' EXIT
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
