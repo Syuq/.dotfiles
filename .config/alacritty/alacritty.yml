@@ -9,7 +9,7 @@ selection:
   save_to_clipboard: true
 
 window:
-  opacity: 1.0
+  opacity: 0.6
   padding:
     x: 5
     y: 0
