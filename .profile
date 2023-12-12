@@ -19,7 +19,7 @@ export DIFFPROG="nvim -d"
 export VISUAL=/usr/bin/nvim
 export PAGER="less"
 # export PAGER="most"
-export BAT_THEME="Nord"
+export BAT_THEME="Dracula"
 # export LESS='-iMRS -x2'
 export LESS='-R --use-color -Dd+g$Du+b'
 # export LESSOPEN='|~/.lessfilter %s'
@@ -142,14 +142,14 @@ export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SO
 
 # JAVA stuff
 export JAVA_HOME="$(dirname $(dirname $(realpath $(which javac))))"
-export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
+export _JAVA_AWT_WM_NONREPARENTING=1 # Fix for Java applications in dwm
 # export _JAVA_OPTIONS DEFAULT="-Dawt.useSystemAAFontSettings=lcd -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 export JAVA_FONTS=/usr/share/fonts/TTF
 export MATLAB_JAVA=/usr/lib/jvm/default-runtime
 export J2D_D3D=false
 
 # Node
-# export npm_config_prefix="$HOME/.local"
+export npm_config_prefix="$HOME/.npm-global"
 export PATH=~/.npm-global/bin:$PATH
 
 # Start graphical server on tty1 if not already running.
@@ -182,6 +182,8 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # brew
 #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -189,9 +191,12 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 # rust
 export PATH="$PATH:$HOME/.cargo/bin"
 
-# java 
+# java
 export PATH="$JAVA_HOME/bin:$PATH"
 export CLASSPATH=$CLASSPATH:/usr/share/tomcat9/lib/servlet-api.jar
+
+# flutter firebase
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 NVIM_RAYX=~/.config/nvim-rayx
 export NVIM_RAYX
