@@ -10,6 +10,19 @@
     font = Monospace 9
     format = "<b>%s</b>\n%b"
 
+[shortcuts]
+  # Close notification.
+  close = ctrl+space
+
+  # Close all notifications.
+  close_all = ctrl+shift+space
+
+  # Redisplay last message(s).
+  history = ctrl+grave
+
+  # Context menu.
+  context = ctrl+shift+period
+
 [urgency_low]
     background = "#1d2021"
     foreground = "#928374"
@@ -25,3 +38,15 @@
     foreground = "#ebdbb2"
     frame_color = "#fabd2f"
     timeout = 10
+
+[brightness]
+	summary = " Light"
+	set_stack_tag = "brightness"
+
+[music]
+	summary = * Now Playing*
+	set_stack_tag = "music"
+
+[DND]
+	summary = *ﮖ Do Not Disturb*
+	set_stack_tag = "dnd"
