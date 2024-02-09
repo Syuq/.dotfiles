@@ -26,10 +26,13 @@ if [ $(date +%j) = 256 ]; then
   echo "CODING DAY 🐧"
 fi
 
+# week
+printf "Current week is: %i\n" "$(date +"%V")" | lolcat
+
 [[ "$(pidof zsh)" == *' '* ]] || echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
 [[ "$(pidof zsh)" == *' '* ]] || cal -3
 
-echo "${normal}🌴" 
+echo "${normal}🌴"
 # echo ${(%):-'%F{yellow}%B%b%f'}
 echo "${Blue}${bold}$(sb-clock)"
 # If you come from bash you might have to change your $PATH.
@@ -55,28 +58,33 @@ DISABLE_AUTO_UPDATE="true"
 export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_MAGIC_FUNCTIONS="false"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
+
+# Random themes
+ZSH_THEME=random
+# ZSH_THEME_RANDOM_CANDIDATES=(dracula starship robbyrussell af-magic ys cloud finosmt
+#   bira dst bureau gnzh linuxonly kardan josh refined)
+ZSH_THEME_RANDOM_CANDIDATES=(dracula starship)
+ZSH_THEME_RANDOM_QUIET=true
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 
 plugins=(
-         git-flow-completion
          sudo
          urltools
          web-search
          # vi-mode
-         zsh-autosuggestions
          ripgrep
          node
-         zsh-syntax-highlighting
-         history-substring-search
+         nvm
          command-not-found
          colored-man-pages
          emotty
@@ -84,12 +92,27 @@ plugins=(
          # emoji-clock
          man
          fzf
-         fzf-tab
          copypath
+         # thefuck
+         # ssh-agent
          copyfile
          emoji
+         # starship
+         zoxide
+
+         # Clone local
+         fzf-tab
+         forgit
+         zsh-syntax-highlighting
+         history-substring-search
+         zsh-autosuggestions
+         git-flow-completion
 )
 
+# ssh-agent IMPORTANT: put these settings before the line that sources oh-my-zsh
+# zstyle :omz:plugins:ssh-agent agent-forwarding yes
+
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#000000,bold"
@@ -120,10 +143,12 @@ load-nvmrc() {
 type -a nvm > /dev/null && add-zsh-hook chpwd load-nvmrc
 type -a nvm > /dev/null && load-nvmrc
 
+#zsh syntax highlighting dracula
+#source /home/tat/.oh-my-zsh/custom/themes/dracu-syntax-highlighting.zsh
+# source /home/tat/.oh-my-zsh/custom/themes/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
 
-#zsh syntax highlighting dracula 
-#source /home/tat/.oh-my-zsh/custom/themes/dracu-syntax-highlighting.zsh 
-source /home/tat/.oh-my-zsh/custom/themes/zsh-syntax-highlighting/zsh-syntax-highlighting.sh 
+# Nerd fonts icon
+source ~/.local/share/fonts/i_oct.sh
 
 # alias
 source $HOME/.aliases
@@ -131,9 +156,9 @@ source $HOME/.aliases
 # env
 source $HOME/.zshenv
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 eval $(thefuck --alias)
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 eval "$(navi widget zsh)"
 eval "$(atuin init zsh --disable-ctrl-r)"
 eval "$(lesspipe.sh)"
@@ -182,6 +207,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 #Broot
 source /home/tat/.config/broot/launcher/bash/br
 
+# ChatGPT nvim
+source ~/.env_chatgpt.nvim
+
 # Load Angular CLI autocompletion.
 source <(ng completion script)
 
@@ -197,16 +225,14 @@ if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/path.zsh.inc' ]; then . 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc'; fi
 
-#Coin
-# coinmon -f shib
-
-# random tip from this document (parses Markdown and extracts an item)
-taocl | lolcat
-
 [[ "$(pidof zsh)" == *' '* ]] || random_emoji fruits
 
 # git-fuzzy
 export PATH="/home/tat/.oh-my-zsh/custom/plugins/git-fuzzy/bin:$PATH"
+
+# Bind zsh-history-substring-search
+bindkey '^[[5~' history-substring-search-up
+bindkey '^[[6~' history-substring-search-down
 
 # fzf-tab
 export GF_BAT_STYLE=changes
@@ -234,3 +260,12 @@ trap 'cowsay "Have a nice day!"; sleep 1' EXIT
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# load homebrew
+[ -d /home/linuxbrew/.linuxbrew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+#Coin
+# coinmon -f shib
+
+# random tip from this document (parses Markdown and extracts an item)
+taocl | lolcat
