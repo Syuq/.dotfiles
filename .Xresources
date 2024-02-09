@@ -25,15 +25,16 @@ st.foreground: #c0caf5
 
 st.fading:                          8
 st.fadeColor:                       black
-st.cursorColor:                     #E4E4E4	
-!!*cursorColor:                     #6df702	
+st.cursorColor:                     #E4E4E4
+!!*cursorColor:                     #6df702
 st.pointerColorBackground:          #2B2C2B
 st.pointerColorForeground:          #16A085
 
 !! Transparency (0-1):
 st.alpha: 0.9
 st.alphaOffset: 0.3
-st.font: JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
+st.font: JetBrainsMono Nerd Font:pixelsize=15:antialias=true:autohint=true;
+! st.font: VictorMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
 
 ! terminal padding color
 ! *borderColor: #24283b
@@ -43,15 +44,15 @@ st.font: JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
 /* *color8:                          #4D4D4D */
 
 /* !! red dark/light */
-/* *color1:                          #ff5555 */	
+/* *color1:                          #ff5555 */
 /* *color9:                          #FF6E67 */
 
 /* !! green dark/light */
-/* *color2:                          #50fa7b */	
+/* *color2:                          #50fa7b */
 /* *color10:                         #5AF78E */
 
 /* !! yellow dark/light */
-/* *color3:                          #f1fa8c */	
+/* *color3:                          #f1fa8c */
 /* *color11:                         #F4F99D */
 
 /* !! blue dark/light */
@@ -63,7 +64,7 @@ st.font: JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
 /* *color13:                         #FF92D0 */
 
 /* !! cyan dark/light */
-/* *color6:                          #8be9fd */	
+/* *color6:                          #8be9fd */
 /* *color14:                         #9AEDFE */
 
 /* !! white dark/light */
@@ -72,17 +73,17 @@ st.font: JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
 
 ! TokyoNight colors for Xresources
 
- *color0: #1D202F 
- *color1: #f7768e 
- *color2: #9ece6a 
- *color3: #e0af68 
-! *color4: #7aa2f7 
- *color5: #bb9af7 
-! *color6: #7dcfff 
- *color7: #a9b1d6 
+ *color0: #1D202F
+ *color1: #f7768e
+ *color2: #9ece6a
+ *color3: #e0af68
+! *color4: #7aa2f7
+ *color5: #bb9af7
+! *color6: #7dcfff
+ *color7: #a9b1d6
 
- *color8: #414868 
- *color9: #f7768e 
+ *color8: #414868
+ *color9: #f7768e
  *color10: #9ece6a
  *color11: #e0af68
 ! *color12: #7aa2f7
@@ -90,7 +91,7 @@ st.font: JetBrainsMono Nerd Font:pixelsize=12:antialias=true:autohint=true;
 ! *color14: #7dcfff
  *color15: #c0caf5
 
- Xcursor.theme: xcursor-breeze
+ Xcursor.theme: Xcursor.theme: Xcursor.theme:
  Xcursor.size:                     0
 
 ! Rofi
