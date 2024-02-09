@@ -20,6 +20,7 @@ export VISUAL=/usr/bin/nvim
 export PAGER="less"
 # export PAGER="most"
 export BAT_THEME="Dracula"
+export GREP_COLORS='ms=01;32'
 # export LESS='-iMRS -x2'
 export LESS='-R --use-color -Dd+g$Du+b'
 # export LESSOPEN='|~/.lessfilter %s'
@@ -114,6 +115,9 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/bin"
 export PATH=~/bin:$PATH
 
+# rofi
+#export PATH=$HOME/.config/rofi/scripts:$PATH
+
 # export GPG_TTY=$(tty)
 # export SYSTEMD_LESS='FRXMK'
 
@@ -149,8 +153,10 @@ export MATLAB_JAVA=/usr/lib/jvm/default-runtime
 export J2D_D3D=false
 
 # Node
-export npm_config_prefix="$HOME/.npm-global"
-export PATH=~/.npm-global/bin:$PATH
+# export npm_config_prefix="$HOME/.npm-global"
+# export PATH=~/.npm-global/bin:$PATH
+PATH="$HOME/.local/bin:$PATH"
+# export npm_config_prefix="$HOME/.local"
 
 # Start graphical server on tty1 if not already running.
 #[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec startx "$XINITRC"
