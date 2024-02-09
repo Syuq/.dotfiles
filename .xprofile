@@ -19,10 +19,17 @@ run dunst &                     # notification server
 run greenclip daemon &          # run clipboard server daemon
 # run clipmenud &
 
-#autostart="mpd xcompmgr dunst unclutter pipewire"
+autostart="mpd xcompmgr unclutter remapd"
+
+for program in $autostart; do
+	pidof -sx "$program" || "$program" &
+done >/dev/null 2>&1
+
+# Ensure that xrdb has finished running before moving on to start the WM/DE.
+[ -n "$xrdbpid" ] && wait "$xrdbpid"
 
 # Make Caps Lock an additional Esc and both Shift Keys toggle Caps Lock
-setxkbmap -option caps:escape,shift:both_capslock &
+# setxkbmap -option caps:escape,shift:both_capslock &
 
 #for program in $autostart; do
 #	pidof -s "$program" || setsid -f "$program"
