@@ -45,19 +45,19 @@ blinking = "Always"
 size = 9.0
 
 [font.bold]
-family = "JetBrains Mono Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "JetBrains Mono Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "BoldItalic"
 
 [font.italic]
-family = "JetBrains Mono Nerd Font"
-style = "MediumItalic"
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
 
 [font.normal]
-family = "JetBrains Mono Nerd Font"
+family = "JetBrainsMono Nerd Font"
 style = "Medium"
 
 [font.offset]
@@ -159,8 +159,8 @@ semantic_escape_chars = "|:\"' {}()[]<>"
 
 [window]
 decorations = "none"
-opacity = 0.6
+opacity = 0.9
 
 [window.padding]
-x = 5
+x = 0
 y = 0
