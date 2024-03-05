@@ -55,6 +55,9 @@ export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 # flutter
 export PATH="$PATH:/home/tat/development/flutter/bin"
 
+# neovide
+# export NEOVIDE_FORK=0
+
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
