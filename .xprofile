@@ -31,10 +31,4 @@ done >/dev/null 2>&1
 # Make Caps Lock an additional Esc and both Shift Keys toggle Caps Lock
 # setxkbmap -option caps:escape,shift:both_capslock &
 
-#for program in $autostart; do
-#	pidof -s "$program" || setsid -f "$program"
-#done >/dev/null 2>&1
-
 # brightness.sh = eDP1 0.9 --temp
-# # Ensure that xrdb has finished running before moving on to start the WM/DE.
-# [ -n "$xrdbpid" ] && wait "$xrdbpid"
