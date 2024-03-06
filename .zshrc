@@ -29,8 +29,8 @@ fi
 # week
 printf "Current week is: %i\n" "$(date +"%V")" | lolcat
 
-[[ "$(pidof zsh)" == *' '* ]] || echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
-[[ "$(pidof zsh)" == *' '* ]] || cal -3
+[[ "$(pidof zsh | wc -w)" == *'2'* ]] && echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
+[[ "$(pidof zsh | wc -w)" == *'2'* ]] && cal -3
 
 echo "${normal}🌴"
 # echo ${(%):-'%F{yellow}%B%b%f'}
@@ -154,7 +154,7 @@ source ~/.local/share/fonts/i_oct.sh
 source $HOME/.aliases
 
 # env
-source $HOME/.zshenv
+source $XDG_CONFIG_HOME/zsh/.zshenv
 
 # eval "$(starship init zsh)"
 eval $(thefuck --alias)
@@ -221,9 +221,6 @@ source <(ng completion script)
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/path.zsh.inc' ]; then . '/home/tat/Templates/test/test/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tat/Templates/test/test/google-cloud-sdk/completion.zsh.inc'; fi
 
 [[ "$(pidof zsh)" == *' '* ]] || random_emoji fruits
 
