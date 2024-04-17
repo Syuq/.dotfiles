@@ -193,3 +193,8 @@
 [filesystem "N/A|17.0.9|/dev/sdb1"]
 	timestampResolution = 5774 nanoseconds
 	minRacyThreshold = 5246 microseconds
+[maintenance]
+	repo = /home/tat/Desktop/new-repo
+[github]
+  user = Syuq
+  token = !"cat ~/.git-oauth-token | tr -d \"\n\""
