@@ -1,10 +1,15 @@
 #!/usr/bin/zsh
- # _____  _  _____             _
-# |_   _|/ \|_   _|  __      _(_)_ __   ___
- #  | | / _ \ | |____\ \ /\ / | | '_ \ / _ \
- #  | |/ ___ \| |_____\ V  V /| | | | |  __/
- #  |_/_/   \_|_|      \_/\_/ |_|_| |_|\___|
-
+#██████▓██   ██▓ █    ██   █████
+#▒██    ▒ ▒██  ██▒ ██  ▓██▒▒██▓  ██▒
+#░ ▓██▄    ▒██ ██░▓██  ▒██░▒██▒  ██░
+#  ▒   ██▒ ░ ▐██▓░▓▓█  ░██░░██  █▀ ░
+#▒██████▒▒ ░ ██▒▓░▒▒█████▓ ░▒███▒█▄
+#▒ ▒▓▒ ▒ ░  ██▒▒▒ ░▒▓▒ ▒ ▒ ░░ ▒▒░ ▒
+#░ ░▒  ░ ░▓██ ░▒░ ░░▒░ ░ ░  ░ ▒░  ░
+#░  ░  ░  ▒ ▒ ░░   ░░░ ░ ░    ░   ░
+#      ░  ░ ░        ░         ░
+#         ░ ░
+#
 bold=$(tput bold)
 normal=$(tput sgr0)
 
@@ -28,9 +33,22 @@ fi
 
 # week
 printf "Current week is: %i\n" "$(date +"%V")" | lolcat
+echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
 
-[[ "$(pidof zsh | wc -w)" == *'2'* ]] && echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
-[[ "$(pidof zsh | wc -w)" == *'2'* ]] && cal -3
+if [[ "$(pidof zsh | wc -w)" < "4" ]]; then
+  cal -3
+fi
+
+cal -3
+if [[ -n ${DISPLAY:+set} ]] && whence xrdb >/dev/null; then
+  if xrdb -query | grep -q '^pietrodito\.session\.ran-fortune:.*true'; then
+    cal -3
+    xrdb -merge <<<'pietrodito.session.ran-fortune: true'
+  fi
+fi
+
+[[ $(pidof zsh | wc -w) == 3 ]] && cal -3
+# [[ "$(pidof zsh)" == *' '* ]] || cal -3
 
 echo "${normal}🌴"
 # echo ${(%):-'%F{yellow}%B%b%f'}
@@ -266,3 +284,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # random tip from this document (parses Markdown and extracts an item)
 taocl | lolcat
+
+PATH=~/.console-ninja/.bin:$PATH
