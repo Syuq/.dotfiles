@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-#██████▓██   ██▓ █    ██   █████
+#  ██████▓██   ██▓ █    ██   █████
 #▒██    ▒ ▒██  ██▒ ██  ▓██▒▒██▓  ██▒
 #░ ▓██▄    ▒██ ██░▓██  ▒██░▒██▒  ██░
 #  ▒   ██▒ ░ ▐██▓░▓▓█  ░██░░██  █▀ ░
@@ -9,7 +9,6 @@
 #░  ░  ░  ▒ ▒ ░░   ░░░ ░ ░    ░   ░
 #      ░  ░ ░        ░         ░
 #         ░ ░
-#
 bold=$(tput bold)
 normal=$(tput sgr0)
 
@@ -83,9 +82,9 @@ ENABLE_CORRECTION="true"
 
 # Random themes
 ZSH_THEME=random
-# ZSH_THEME_RANDOM_CANDIDATES=(dracula starship robbyrussell af-magic ys cloud finosmt
-#   bira dst bureau gnzh linuxonly kardan josh refined)
-ZSH_THEME_RANDOM_CANDIDATES=(dracula starship)
+ZSH_THEME_RANDOM_CANDIDATES=(dracula starship robbyrussell af-magic ys cloud finosmt
+  bira dst bureau gnzh linuxonly kardan josh refined)
+# ZSH_THEME_RANDOM_CANDIDATES=(dracula starship)
 ZSH_THEME_RANDOM_QUIET=true
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -168,9 +167,6 @@ type -a nvm > /dev/null && load-nvmrc
 # Nerd fonts icon
 source ~/.local/share/fonts/i_oct.sh
 
-# alias
-source $HOME/.aliases
-
 # env
 source $XDG_CONFIG_HOME/zsh/.zshenv
 
@@ -181,6 +177,8 @@ eval "$(navi widget zsh)"
 eval "$(atuin init zsh --disable-ctrl-r)"
 eval "$(lesspipe.sh)"
 eval "$(fnm env --use-on-cd)"
+eval "$(leetcode completions)"
+eval "$(mcfly init zsh)"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
@@ -286,3 +284,8 @@ export NVM_DIR="$HOME/.nvm"
 taocl | lolcat
 
 PATH=~/.console-ninja/.bin:$PATH
+
+[ -s "/home/tat/.scm_breeze/scm_breeze.sh" ] && source "/home/tat/.scm_breeze/scm_breeze.sh"
+
+# alias
+source $HOME/.aliases
