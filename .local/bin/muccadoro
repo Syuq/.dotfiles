@@ -1,0 +1,271 @@
+#!/usr/bin/env bash
+
+set -o nounset -o pipefail
+
+# Before doing anything, check if the required programs are installed.  See
+# <https://stackoverflow.com/q/592620>.  Some of these can probably be reasonably assumed
+# to be present, but err on the side of caution.
+for prog in awk cowsay figlet notify-send stty tput; do
+   if ! hash "$prog" 2>/dev/null; then
+      printf 'muccadoro: %s: command not found\n' "$prog" >&2
+      exit 127
+   fi
+done
+
+declare -i silly=1
+
+# https://mywiki.wooledge.org/BashFAQ/035#getopts
+# https://wiki.bash-hackers.org/howto/getopts_tutorial
+while getopts ':s' opt; do
+   case $opt in
+      s) (( ++silly ));;
+   esac
+done
+shift "$((OPTIND-1))" # Shift off the options and optional --.
+
+# One pomodoro lasts "$1" minutes.  The default duration is 25 minutes.
+declare -i duration=$((${1:-25}*60)) num_pomodoros=4
+
+(( silly %= 5 ))
+if (( silly )); then
+   declare -i silliness=$((2**(4-silly)))
+   # `apps` stands for appearances, of course.
+   declare -a apps=('' '-b' '-d' '-g' '-p' '-s' '-t' '-w' '-e oO' '-e Oo' '-e ><' '-e -o'
+      '-e o-' '-e >o' '-e o<')
+   num_apps=${#apps[@]}
+   cowtell() {
+      app_num=$((RANDOM % (silliness * num_apps)))
+      (( app_num >= num_apps )) && app_num=0
+      cowsay -n ${apps[app_num]}
+   }
+else
+   cowtell() {
+      cowsay -n
+   }
+fi
+
+summary=
+
+# Standard output must be a terminal.  See <https://unix.stackexchange.com/q/91638>.  Save
+# the original stdout to file descriptor 3 (see <https://unix.stackexchange.com/q/80988>).
+exec 3>&1 &>/dev/tty
+
+# Save the current terminal settings.
+initial_tty_settings=$(stty -g)
+
+# Revert all changed terminal settings (FIXME: restore everything from saved settings) and
+# print a summary.
+cleanup() {
+   tput rmcup
+   tput cnorm
+   stty "$initial_tty_settings"
+   [[ $summary ]] && echo -ne "$summary" >&3
+}
+
+trap cleanup EXIT
+
+# Switch to the alternate screen.  See <https://unix.stackexchange.com/q/27941>, xterm(1),
+# terminfo(5), and <https://stackoverflow.com/q/11023929>.
+tput smcup
+
+# TODO: explain.  See
+# <http://www.unix.com/shell-programming-and-scripting/176837-bash-hide-terminal-cursor.html>.
+tput civis
+
+# Don't echo characters typed on the tty.  See <https://unix.stackexchange.com/a/28620>.
+stty -echo
+
+# Output empty lines before the message so the message is displayed at the bottom of the
+# terminal.  See <https://stackoverflow.com/a/29314659>.  Also, instead of `clear`ing
+# (which causes flickering), pad all lines of the message with spaces all the way to the
+# right edge of the terminal, thereby overwriting any currently displayed characters.  See
+# <https://stackoverflow.com/questions/9394408>.  TODO: probably just use Bash and not
+# awk.
+pad() {
+   awk -v lines="$(tput lines)" -v cols="$(tput cols)" '
+      NR!=1 && FNR==1 { n=lines-NR; for(; n>0; n--) printf "%-"cols"s\n", "" }
+      NR==FNR { next }
+      { printf "%-"cols"s\n", $0 }' <(echo "$1"){,}
+}
+
+pp() {
+   tput cup 0 0 # TODO: explain.
+   pad "$1"
+}
+
+ppp() {
+   tput cup 0 0
+   # FIXME: probably just check once if we have lolcat.
+   pad "$1" | { lolcat 2>/dev/null || cat; }
+}
+
+declare -a lyrics
+declare -i line_index=0
+lyrics=(
+   "Can't stop, addicted to the shindig;"
+   "Chop Top, he says I'm gonna win big;"
+   "Choose not a life of imitation;"
+   "Distant cousin to the reservation;"
+   "Defunct the pistol that you pay for;"
+   "This punk, the feeling that you stay for;"
+   "In time I want to be your best friend;"
+   "East side lovers living on the west end;"
+   "Knocked out but boy you better come to;"
+   "Don't die, you know the truth as some do;"
+   "Go write your message on the pavement;"
+   "Burn so bright I wonder what the wave meant;"
+)
+
+declare -i state=0
+
+cant-stop() {
+   (( state == 2 )) && return
+   state=2
+   tty_settings=$(stty -g)
+   trap '' INT
+   stty susp undef
+   pp "$(cowsay -e '><' -W $(($(tput cols)-3)) ${lyrics[line_index]})"
+
+   ((++line_index)); ((line_index%=${#lyrics[@]}))
+   sleep 2 & wait $!
+   stty "$tty_settings"
+   count-state
+}
+
+# SIGTSTP handler.
+on-tstp() {
+   # Signal all processes in the process group $$ (the group leader) to continue.  See
+   # kill(1), and <https://unix.stackexchange.com/q/139222>.  Pomodoros are not
+   # interruptible.
+   kill -CONT -- -$$
+   if (( state == 1 )); then
+      cant-stop
+   fi
+}
+trap on-tstp TSTP
+
+count-state() {
+   # 130 is the exit status for termination by Ctrl-C.  See
+   # <https://www.tldp.org/LDP/abs/html/exitcodes.html>.
+   trap 'trap on-int INT; on-int; return 130' INT
+   state=1
+}
+
+dead-state() {
+   trap on-int INT
+   state=0
+}
+
+pause-state() {
+   trap on-int INT
+   state=0
+}
+
+on-int() {
+   if (( state==0 )); then
+      # We are supposed to kill ourselves with SIGINT instead of using `exit`.  See
+      # <https://mywiki.wooledge.org/SignalTrap#Special_Note_On_SIGINT>.
+      trap - INT
+      kill -INT $$
+   elif (( state==1 )); then
+      dead-state
+   elif (( state==2 )); then
+      count-state
+   fi
+}
+
+# XXX: beware of bugs due to SIGINT (Ctrl-C) being received during the short timeframe in
+# which another function invoked by this one is executing.  The `return 1` statement of
+# the SIGINT trap will be ran in the context of the inner function.
+pomodoro() {
+   count-state
+   while :; do
+      # Handle signals immediately, not after `sleep` exits.  See
+      # <https://mywiki.wooledge.org/SignalTrap#When_is_the_signal_handled.3F>.
+      sleep 1 &
+      # See <https://mywiki.wooledge.org/BashFAQ/002>.
+      the_time=$((seconds/60)):$(printf '%02d' $((seconds%60)))
+      # Keep in mind that almost everything causes new values to be assigned to `$?`:
+      #    $ false
+      #    $ (( $? )) && echo $?
+      #    0
+      #    $ false || { (( $? != 148 )) && echo $?; }
+      #    0
+      # In both cases, when `echo $?` is executed, `$?` is no longer 1.
+      fail=$?
+      if (( fail && fail != 148 )); then
+         return $fail
+      fi
+      text=$(figlet -f small "$the_time" | cowtell)
+      fail=$?
+      if (( ! fail )); then
+         pp "$text"
+         fail=$?
+         (( fail && fail != 148 )) && return $fail
+      elif (( fail != 148 )); then
+         return $fail
+      fi
+      wait
+      seconds=$((planned_end_time - $(date +'%s')))
+      ((seconds <= 0)) && return 0
+   done
+   return 1
+}
+
+flush-stdin() {
+   # See <https://superuser.com/q/276531>.
+   read -r -d '' -t 0.1 -n 1000
+}
+
+# FIXME: why `dummy` (https://wiki.bash-hackers.org/commands/builtin/read#press_any_key).
+pause() {
+   # See <https://wiki.bash-hackers.org/syntax/pe#use_an_alternate_value>.
+   read -r -n 1${1:+ -t $1}
+}
+
+for (( n=1; n<=num_pomodoros; ++n )); do
+   declare -i seconds=$duration
+   declare -i start_time_secs=$(date +'%s')
+   start_time=$(date --date "@$start_time_secs" +'%H:%M')
+   planned_end_time=$((start_time_secs + duration))
+   pomodoro
+   fail=$?
+   if (( fail == 130 )); then
+      summary+="Abandoned: $start_time to $(date +'%H:%M')\n"
+      # Pomodoros are atomic.
+      pp "$(cowsay -d -W $(($(tput cols)-3)) 'You abandoned pomodoro '$n'.  Press any' \
+         'key to restart it.')"
+      pause
+      (( --n ))
+      continue
+   elif (( fail )); then
+      exit $fail
+   fi
+   pause-state
+   tty_settings=$(stty -g)
+   stty susp undef
+   summary+="Pomodoro $n: $start_time to $(date +'%H:%M')\n"
+   if (( n!=num_pomodoros )); then
+      start_time=$(date +'%s')
+      notify-send "You completed pomodoro $n.  Take a short break (3-5 minutes)."
+      # TODO: it may be nice to create this message asynchronously with `lolcat -f` since
+      # lolcat is a bit slow.  That's not a priority, though.
+      ppp "$(cowsay -e '^^' -W $(($(tput cols)-3)) 'You completed pomodoro '$n'.  Take' \
+         'a short break (3-5 minutes), then press any key to continue.')"
+      flush-stdin
+      if ! pause 180; then
+         pp "$(cowsay -w -W $(($(tput cols)-3)) 'Press any key to continue.')"
+         pause 120 || {
+            notify-send -u critical 'Time to start the next pomodoro.'; pause;
+         }
+      fi
+      break_duration=$((($(date +'%s')-start_time+30)/60))
+      summary+="Break: about $break_duration minute"
+      (( break_duration != 1 )) && summary+=s # plural
+      summary+='\n'
+   fi
+   stty "$tty_settings"
+done
+notify-send "You completed all $num_pomodoros pomodoros!"
+
+# vim: tw=90 sts=-1 sw=3 et
