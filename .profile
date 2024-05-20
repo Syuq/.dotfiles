@@ -1,9 +1,4 @@
-# |_   _|/ \|_   _|
-#   | | / _ \ | |
-#   | |/ ___ \| |
-#   |_/_/   \_|_|
-
-#!/bin/zsh
+#!/bin/sh
 
 # profile file. Runs on login. Environmental variables are set here.
 
@@ -51,6 +46,16 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 # export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+
+# mclfy
+export MCFLY_LIGHT=FALSE
+export MCFLY_KEY_SCHEME=vim
+export MCFLY_FUZZY=2
+export MCFLY_RESULTS=50
+export MCFLY_INTERFACE_VIEW=BOTTOM
+export MCFLY_DISABLE_MENU=TRUE
+export MCFLY_RESULTS_SORT=LAST_RUN
+export MCFLY_PROMPT="❯"
 
 # flutter
 export PATH="$PATH:/home/tat/development/flutter/bin"
@@ -220,3 +225,19 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
+
+# pass
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+
+# forgit
+export FORGIT_CHECKOUT_BRANCH_BRANCH_GIT_OPTS='--sort=-committerdate'
+export FORGIT_FZF_DEFAULT_OPTS="
+--exact
+--border
+--cycle
+--reverse
+--height '80%'
+"
+
+# ssh
+# export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)

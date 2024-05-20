@@ -56,3 +56,5 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 # [[ -f ~/.bashrc ]] && . ~/.bashrc
 # 
 source /home/tat/.config/broot/launcher/bash/br
+
+[ -s "/home/tat/.scm_breeze/scm_breeze.sh" ] && source "/home/tat/.scm_breeze/scm_breeze.sh"

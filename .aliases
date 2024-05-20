@@ -211,13 +211,14 @@ alias \
   ffmpeg="ffmpeg -hide_banner" \
   glog='git log --graph --oneline --decorate --all'
 
+# nv='neovide --nofork --multigrid --novsync' \
 alias \
   packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 40" \
   packinstalled="comm -12 <(grep -Poe '\[ALPM\] installed \K\S*' /var/log/pacman.log | sort | uniq) <(pacman -Qeqn | sort)" \
   config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' \
   pacman-contrib='pacman -Ql pacman pacman-contrib | grep -E 'bin/.+'' \
   pacfzf='pacman -Slq | fzf --preview 'pacman -Si {}' --layout=reverse' \
-  nv='neovide --nofork --multigrid --novsync' \
+  nv='neovide --no-fork' \
   hx='helix' \
   bc='bc -l ~/.bcrc'
 
@@ -247,3 +248,5 @@ alias \
 #
 # chatGPT prompts
 # alias chatgpt-prompts="curl -s https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv | tail +2 | ruby -rcsv -e 'CSV.parse(STDIN.read) {|row| puts row.join('\t')}' | fzf -1 -q '$1' --with-nth 1 --delimiter '\t' --preview 'echo {2} | fold -s -w $(tput cols)' | cut -d'	' -f2"
+alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'

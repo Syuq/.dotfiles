@@ -38,4 +38,5 @@ fi
 [ -f "$XDG_CONFIG_HOME"/X11/xprofile ] && source "$XDG_CONFIG_HOME"/X11/xprofile || source ~/.xprofile
 
 # start dwm
-# exec dwm
+exec dwm
+# ssh-agent dwm

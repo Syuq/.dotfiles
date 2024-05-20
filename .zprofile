@@ -55,6 +55,9 @@ export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 # flutter
 export PATH="$PATH:/home/tat/development/flutter/bin"
 
+# neovide
+# export NEOVIDE_FORK=0
+
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -217,3 +220,60 @@ export QT_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
+
+# export CC="clang-12"
+export CXX="clang++-20"
+
+catr() {
+    tail -n "+$1" $3 | head -n "$(($2 - $1 + 1))"
+}
+
+validateYaml() {
+    python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
+}
+
+goWork() {
+    cp ~/.npm_work_rc ~/.npmrc
+}
+
+goPersonal() {
+    cp ~/.npm_personal_rc ~/.npmrc
+}
+
+addThrottle() {
+    local kbs="kbps"
+    echo $kbs
+    echo "About to throttle to $1 $kbs"
+    echo "sudo tc qdisc add dev wlp59s0 handle 1: root htb default 11"
+    echo "sudo tc class add dev wlp59s0 parent 1: classid 1:1 htb rate $1$kbs"
+    echo "sudo tc class add dev wlp59s0 parent 1:1 classid 1:11 htb rate $1$kbs"
+    sudo tc qdisc add dev wlp59s0 handle 1: root htb default 11
+    sudo tc class add dev wlp59s0 parent 1: classid 1:1 htb rate $1$kbs
+    sudo tc class add dev wlp59s0 parent 1:1 classid 1:11 htb rate $1$kbs
+}
+
+removeThrottle() {
+    sudo tc qdisc del dev wlp59s0 root
+}
+
+cat1Line() {
+    cat $1 | tr -d "\n"
+}
+
+ioloop() {
+    FIFO=$(mktemp -u /tmp/ioloop_$$_XXXXXX ) &&
+    trap "rm -f $FIFO" EXIT &&
+    mkfifo $FIFO &&
+    ( : <$FIFO & ) &&    # avoid deadlock on opening pipe
+    exec >$FIFO <$FIFO
+}
+
+eslintify() {
+    cat $1 > /tmp/file_to_eslint
+    npx eslint
+}
+
+# start my custom script for setting random background wallpapers
+# if [ -f "$HOME/wp.sh" ] ; then
+#     bash $HOME/wp.sh &
+# fi

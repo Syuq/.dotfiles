@@ -161,3 +161,4 @@ eval "$(atuin init bash)"
 . ~/.bash.d/cht.sh
 
 PATH=~/.console-ninja/.bin:$PATH
+[ -s "/home/tat/.scm_breeze/scm_breeze.sh" ] && source "/home/tat/.scm_breeze/scm_breeze.sh"

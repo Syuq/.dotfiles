@@ -19,7 +19,8 @@ run dunst &                     # notification server
 run greenclip daemon &          # run clipboard server daemon
 # run clipmenud &
 
-autostart="mpd xcompmgr unclutter remapd"
+# autostart="mpd xcompmgr unclutter remapd"
+autostart="mpd xcompmgr unclutter"
 
 for program in $autostart; do
 	pidof -sx "$program" || "$program" &
