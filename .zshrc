@@ -34,11 +34,11 @@ fi
 printf "Current week is: %i\n" "$(date +"%V")" | lolcat
 echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
 
-if [[ "$(pidof zsh | wc -w)" < "4" ]]; then
+if [[ "$(pidof zsh | wc -w)" = "4" ]]; then
   cal -3
 fi
 
-cal -3
+# cal -3
 if [[ -n ${DISPLAY:+set} ]] && whence xrdb >/dev/null; then
   if xrdb -query | grep -q '^pietrodito\.session\.ran-fortune:.*true'; then
     cal -3
@@ -82,7 +82,7 @@ ENABLE_CORRECTION="true"
 
 # Random themes
 ZSH_THEME=random
-ZSH_THEME_RANDOM_CANDIDATES=(dracula starship robbyrussell af-magic ys cloud finosmt
+ZSH_THEME_RANDOM_CANDIDATES=(dracula starship robbyrussell af-magic ys cloud
   bira dst bureau gnzh linuxonly kardan josh refined)
 # ZSH_THEME_RANDOM_CANDIDATES=(dracula starship)
 ZSH_THEME_RANDOM_QUIET=true
