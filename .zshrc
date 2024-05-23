@@ -179,6 +179,7 @@ eval "$(lesspipe.sh)"
 eval "$(fnm env --use-on-cd)"
 eval "$(leetcode completions)"
 eval "$(mcfly init zsh)"
+eval "$(plow --completion-script-zsh)"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
