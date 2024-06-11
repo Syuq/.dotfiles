@@ -273,6 +273,11 @@ eslintify() {
     npx eslint
 }
 
+decode64() {
+  perl -MMIME::Base64 -ne 'printf "%s\n",decode_base64($_)' <<< "$1" ; echo 
+  # echo "$1" | base64 -d ; echo
+}
+
 # start my custom script for setting random background wallpapers
 # if [ -f "$HOME/wp.sh" ] ; then
 #     bash $HOME/wp.sh &
