@@ -2,5 +2,5 @@
 normal = ["JetBrainsMono Nerd Font"]
 size = 9
 
-[font.features]
-JetBrainsMono = [ "+ss01", "+ss07", "+ss11", "-calt", "+ss09", "+ss02", "+ss14", "+ss16", "+ss17" ]
+# [font.features]
+# JetBrainsMono = [ "+ss01", "+ss07", "+ss11", "-calt", "+ss09", "+ss02", "+ss14", "+ss16", "+ss17" ]
