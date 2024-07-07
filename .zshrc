@@ -34,7 +34,7 @@ fi
 printf "Current week is: %i\n" "$(date +"%V")" | lolcat
 echo "$(ordinal ${GREEN}${bold}$(date +%j)) ${YELLOW}day"
 
-if [[ "$(pidof zsh | wc -w)" = "4" ]]; then
+if [[ "$(pidof zsh | wc -w)" = "3" ]]; then
   cal -3
 fi
 
@@ -46,7 +46,7 @@ if [[ -n ${DISPLAY:+set} ]] && whence xrdb >/dev/null; then
   fi
 fi
 
-[[ $(pidof zsh | wc -w) == 3 ]] && cal -3
+# [[ $(pidof zsh | wc -w) == 3 ]] && cal -3
 # [[ "$(pidof zsh)" == *' '* ]] || cal -3
 
 echo "${normal}🌴"
@@ -82,9 +82,10 @@ ENABLE_CORRECTION="true"
 
 # Random themes
 ZSH_THEME=random
-ZSH_THEME_RANDOM_CANDIDATES=(dracula starship robbyrussell af-magic ys cloud
-  bira dst bureau gnzh linuxonly kardan josh refined)
-# ZSH_THEME_RANDOM_CANDIDATES=(dracula starship)
+# ZSH_THEME="" # Pure Pretty, minimal and fast ZSH prompt
+# ZSH_THEME_RANDOM_CANDIDATES=(dracula starship robbyrussell af-magic ys cloud
+#   bira dst bureau gnzh linuxonly kardan josh refined)
+ZSH_THEME_RANDOM_CANDIDATES=(dracula starship)
 ZSH_THEME_RANDOM_QUIET=true
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -125,6 +126,14 @@ plugins=(
          zsh-autosuggestions
          git-flow-completion
 )
+
+# .zshrc pure settings
+# fpath+=($HOME/.zsh/pure)
+# autoload -U promptinit; promptinit
+# prompt pure
+# zmodload zsh/nearcolor
+# zstyle :prompt:pure:path color '#FF0000'
+# zstyle :prompt:pure:git:stash show yes
 
 # ssh-agent IMPORTANT: put these settings before the line that sources oh-my-zsh
 # zstyle :omz:plugins:ssh-agent agent-forwarding yes
@@ -280,6 +289,14 @@ export NVM_DIR="$HOME/.nvm"
 
 #Coin
 # coinmon -f shib
+
+if type clipcat-menu >/dev/null 2>&1; then
+    alias clipedit=' clipcat-menu --finder=builtin edit'
+    alias clipdel=' clipcat-menu --finder=builtin remove'
+
+    bindkey -s '^\' "^Q clipcat-menu --finder=builtin insert ^J"
+    bindkey -s '^]' "^Q clipcat-menu --finder=builtin remove ^J"
+fi
 
 # random tip from this document (parses Markdown and extracts an item)
 taocl | lolcat

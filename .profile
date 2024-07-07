@@ -5,6 +5,7 @@
 # If you don't plan on reverting to bash, you can remove the link in ~/.profile
 # to clean up.
 
+export SECOND_BRAIN=("/home/tat/Repos/github.com/syuq/second-brain")
 # Default programs:
 export EDITOR=/usr/bin/nvim
 export TERMINAL=/usr/local/bin/st
@@ -241,3 +242,5 @@ export FORGIT_FZF_DEFAULT_OPTS="
 
 # ssh
 # export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+export MYSQL_PS1="\u@\h [\d]> " # Prompt mysql

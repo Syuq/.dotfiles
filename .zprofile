@@ -112,6 +112,8 @@ export GOPATH="$HOME/go"
 export GOROOT="/usr/lib/go"
 export GOBIN=$HOME/go/bin
 export GO111MODULE="on"
+# To get all goroutines trace
+export GOTRACEBACK=all
 
 export PATH="$PATH:$HOME/go/bin"
 
@@ -222,7 +224,14 @@ export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 
 # export CC="clang-12"
-export CXX="clang++-20"
+# export CXX="clang++-20"
+export MYSQL_PS1="\u@\h [\d]> " # Prompt mysql
+# mcFly
+export MCFLY_KEY_SCHEME=vim
+export MCFLY_FUZZY=2
+export MCFLY_RESULTS=40
+export MCFLY_INTERFACE_VIEW=BOTTOM
+export MCFLY_PROMPT="🦜"
 
 catr() {
     tail -n "+$1" $3 | head -n "$(($2 - $1 + 1))"
@@ -274,9 +283,27 @@ eslintify() {
 }
 
 decode64() {
-  perl -MMIME::Base64 -ne 'printf "%s\n",decode_base64($_)' <<< "$1" ; echo 
+  perl -MMIME::Base64 -ne 'printf "%s\n",decode_base64($_)' <<< "$1" ; echo
   # echo "$1" | base64 -d ; echo
 }
+
+topp() (
+  if [ -n "$O" ]; then
+    $* &
+  else
+    $* &>/dev/null &
+  fi
+  pid="$!"
+  trap "kill $pid" SIGINT
+  o='%cpu,%mem,vsz,rss'
+  printf '%s\n' "$o"
+  i=0
+  while s="$(ps --no-headers -o "$o" -p "$pid")"; do
+    printf "$i $s\n"
+    i=$(($i + 1))
+    sleep "${T:-0.1}"
+  done
+)
 
 # start my custom script for setting random background wallpapers
 # if [ -f "$HOME/wp.sh" ] ; then
