@@ -1,12 +1,13 @@
 configuration {
     modi: "drun,window";
-    width: 600;
+    width: 100;
     sidebar-mode:   true;
     drun-icon-theme: "Bonny_Light_Icons";
     icon-theme: "Bonny_Light_Icons";
-    lines: 10;
+    lines: 20;
     show-icons:     true;
     fullscreen: false;
+    font: "JetBrainsMono Nerd Font 9";
     show-match: false;
     separator-style: "solid";
     hide-scrollbar: true;
@@ -47,7 +48,7 @@ window {
 }
 mainbox {
     border:  2;
-    padding: 20;
+    padding: 5;
 }
 message {
     border:       1px 1px 1px ;
@@ -58,17 +59,18 @@ textbox {
     text-color: @foreground;
 }
 listview {
+    lines: 27;
     fixed-height: 0;
     border:       1px 0px 0px ;
     border-color: @separatorcolor;
     spacing:      5px ;
     scrollbar:    false;
-    padding:       5 0 0;
+    padding:       0 0 0;
 
 }
 element {
     border:  0;
-    padding: 5px ;
+    padding: 1px ;
 }
 element.normal.normal {
     background-color: @normal-background;
@@ -159,4 +161,3 @@ inputbar {
     text-color: #ffffff;
     background-color:@background-color;
 }
-

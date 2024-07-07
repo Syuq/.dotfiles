@@ -119,7 +119,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- generic LSP settings
 
 -- Angular
-require("lvim.lsp.manager").setup("angularls")
+-- require("lvim.lsp.manager").setup("angularls")
 
 -- ---@usage disable automatic installation of servers
 -- lvim.lsp.automatic_servers_installation = false
