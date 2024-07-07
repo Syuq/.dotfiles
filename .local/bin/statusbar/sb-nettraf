@@ -2,7 +2,7 @@
 
 # Module showing network traffic. Shows how much data has been received (RX) or
 # transmitted (TX) since the previous time this script ran. So if run every
-# second, gives network traffic per second.
+# second, gives network traffic per second.🔻🠋🔺🡹
 
 case $BLOCK_BUTTON in
 	1) setsid -f "$TERMINAL" -e bmon ;;
