@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# silent prompt
+read -p 'GIT profile: ' profile
+
+# switch
+case $profile in
+Syuq)
+	git config user.email "tatd.wine@gmail.com"
+	git config user.name "Syuq"
+	;;
+TAT-w)
+	git config user.email "fakesky301@gmail.com"
+	git config user.name "TAT-w"
+	#git config user.signingKey "gpg_public_key"
+	;;
+# default case: raise error
+*)
+	>&2 echo "ERR: Unknown profile: $profile"
+	exit 1
+	;;
+esac
