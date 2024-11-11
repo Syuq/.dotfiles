@@ -252,3 +252,5 @@ alias \
 # alias chatgpt-prompts="curl -s https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv | tail +2 | ruby -rcsv -e 'CSV.parse(STDIN.read) {|row| puts row.join('\t')}' | fzf -1 -q '$1' --with-nth 1 --delimiter '\t' --preview 'echo {2} | fold -s -w $(tput cols)' | cut -d'	' -f2"
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
