@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Status bar module for Bluetooth
+# Interacts with Bluetooth via blueman-manager, bluetoothctl, etc.
+
+case $BLOCK_BUTTON in
+1) /usr/bin/blueman-manager ;;  # Left-click: Open Bluetooth Manager
+2) bluetoothctl power toggle ;; # Middle-click: Toggle Bluetooth power
+3) notify-send "🌀 Bluetooth module" "\- Left-click: Open Bluetooth Manager.
+- Middle-click: Toggle Bluetooth power.
+- Right-click: Show help." ;;
+6) "$TERMINAL" -e "$EDITOR" "$0" ;; # Hold-click: Edit this script
+esac
+
+# Check Bluetooth power state
+bluetooth_status=$(bluetoothctl show | grep -q "Powered: yes" && echo "⏽" || echo "Off")
+
+# Display Bluetooth status
+icon="🌀"
+printf "%s %s\n" "$icon" "$bluetooth_status"
