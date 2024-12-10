@@ -1,4 +1,13 @@
-live_config_reload = true
+general.live_config_reload = true
+
+general.import = [
+"~/.config/alacritty/base16-dark.toml",
+"~/.config/alacritty/keybindings.toml",
+"alacritty-theme/themes/gruvbox_dark.toml",
+]
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -39,7 +48,8 @@ foreground = "0xc0caf5"
 unfocused_hollow = true
 
 [cursor.style]
-blinking = "Always"
+blinking = "Never"
+shape = "Beam"
 
 [font]
 size = 9.0
@@ -63,92 +73,6 @@ style = "Medium"
 [font.offset]
 y = 1
 
-[[keyboard.bindings]]
-action = "Paste"
-key = "V"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "Copy"
-key = "C"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "ScrollPageUp"
-key = "U"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "ScrollPageDown"
-key = "D"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "ScrollLineUp"
-key = "K"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "ScrollLineDown"
-key = "J"
-mods = "Alt"
-
-[[keyboard.bindings]]
-action = "ToggleViMode"
-key = "Escape"
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "ToggleViMode"
-key = "I"
-mode = "Vi|~Search"
-
-[[keyboard.bindings]]
-action = "FirstOccupied"
-key = 7
-mode = "Vi|~Search"
-mods = "Shift"
-
-[[keyboard.bindings]]
-action = "Last"
-key = 5
-mode = "Vi|~Search"
-mods = "Shift"
-
-[[keyboard.bindings]]
-action = "Bracket"
-key = 6
-mode = "Vi|~Search"
-mods = "Shift"
-
-[[keyboard.bindings]]
-action = "SearchBackward"
-key = 53
-mode = "Vi|~Search"
-mods = "Shift"
-
-[[keyboard.bindings]]
-action = "SearchEnd"
-key = "N"
-mode = "Vi"
-mods = "Control"
-
-[[keyboard.bindings]]
-action = "SpawnNewInstance"
-key = "Return"
-mods = "Super"
-
-[[keyboard.bindings]]
-action = "SearchStart"
-key = "N"
-mode = "Vi"
-mods = "Control|Shift"
-
-[[keyboard.bindings]]
-action = "ToggleFullscreen"
-key = "F"
-mods = "Super"
-
 [scrolling]
 history = 10000
 multiplier = 10
@@ -164,3 +88,21 @@ opacity = 0.9
 [window.padding]
 x = 0
 y = 0
+
+[mouse]
+hide_when_typing = true
+bindings = [
+{ mouse = "Right", mods = "Control", action = "Paste" },
+]
+
+[[hints.enabled]]
+command = "xdg-open" # On Linux/BSD
+# command = "open" # On macOS
+# command = { program = "cmd", args = [ "/c", "start", "" ] } # On Windows
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = "O", mods = "Control|Shift" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
