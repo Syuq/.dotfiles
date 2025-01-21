@@ -11,19 +11,18 @@
 # bold_font        VictorMono Nerd Font Bold
 # bold_italic_font VictorMono Nerd Font Bold Italic
 # Linux
-font_family      Victor Mono Medium
-# font_family      Monaspace Neon Regular
-italic_font      Victor Mono Medium Italic
-bold_font        JetBrainsMono Extra Bold
-bold_italic_font JetBrainsMono Extra Bold Italic
+font_family      JetBrains Mono Medium Nerd Font Complete
+italic_font      JetBrains Mono Medium Italic Nerd Font Complete
+bold_font        JetBrains Mono Bold Nerd Font Complete
+bold_italic_font JetBrains Mono Bold Italic Nerd Font Complete
 
-# JetBrainsMono Extra Bold  # JetBrainsMono Extra Bold
+# JetBrainsMono Extra Bold  # Victor Mono Bold
 # check result with:  echo -e "\nnormal flower\n\e[1mboldflower\e[0m\n\e[3mitalic flower\e[0m\n\e[3m\e[1mbold italic flower\e[0m\n\e[4munderline flower\e[0m\n\e[9mstrikethrough flower\e[0m\n\e[4:3mcurly underline flower\e[4:0m\n\e[4:3\e[58:mcurlyunderlinewithcolor flower\e[59m\e[4:0m"
 # Font size (in pts)
 font_size        9.0
 # less sapace and more space for text
 # adjust_line_height  96%
-adjust_column_width 110%
+adjust_column_width 105%
 # for italic
 # box_drawing_scale 0.001, 1, 1.5, 2
 modify_font underline_position 2, 10
@@ -36,7 +35,8 @@ macos_thicken_font 0.20
 macos_custom_beam_cursor yes
 
 # snazzy OceanicMaterial.conf, or JetB_Darcula
-background_opacity 0.88
+include ./theme.conf
+background_opacity 0.39
 
 #Allow changing of the background_opacity dynamically
 dynamic_background_opacity yes
@@ -62,11 +62,11 @@ cursor_beam_thickness 3
 
 # The interval (in seconds) at which to blink the cursor. Set to zero to
 # disable blinking.
-cursor_blink_interval     0.8
+cursor_blink_interval     0.6
 
 # Stop blinking cursor after the specified number of seconds of keyboard inactivity. Set to
 # zero or a negative number to never stop blinking.
-cursor_stop_blinking_after 20.0
+cursor_stop_blinking_after 15.0
 
 # Number of lines of history to keep in memory for scrolling back
 scrollback_lines 10000
@@ -78,8 +78,7 @@ scrollback_lines 10000
 # scrollback_pager less --chop-long-lines --RAW-CONTROL-CHARS +INPUT_LINE_NUMBER
 
 
-scrollback_pager nvim -u NONE -R -M -c 'lua require("core.kitty_page")(INPUT_LINE_NUMBER, CURSOR_LINE, CURSOR_COLUMN)' -
-# scrollback_pager nvim -u NONE -c "set nonumber nolist showtabline=0 foldcolumn=0" -c "autocmd TermOpen * normal G" -c "map q :qa!<CR>" -c "set clipboard+=unnamedplus" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "
+scrollback_pager /usr/local/bin/nvim -u NONE -c "set nonumber nolist showtabline=0 foldcolumn=0" -c "autocmd TermOpen * normal G" -c "map q :qa!<CR>" -c "set clipboard+=unnamedplus" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "
 
 
 # Wheel scroll multiplier (modify the amount scrolled by the mouse wheel)
@@ -190,7 +189,8 @@ macos_quit_when_last_window_closed yes
 # You can use the special action no_op to unmap a keyboard shortcut that is
 # assigned in the default configuration.
 
-kitty_mod super
+# kitty_mod super
+kitty_mod alt
 
 # map f1 launch vim path/to/some/file
 
@@ -263,7 +263,7 @@ map kitty_mod+ctrl+f3   show_scrollback
 
 #: Window management {{{
 
-map kitty_mod+enter new_os_window_with_cwd
+map kitty_mod+enter new_window
 
 #: You can open a new window running an arbitrary program, for
 #: example::
@@ -290,14 +290,14 @@ map kitty_mod+enter new_os_window_with_cwd
 
 #: For more details, see launch.
 
-map kitty_mod+n new_os_window
+map kitty_mod+n new_os_window_with_cwd
 
 #: Works like new_window above, except that it opens a top level OS
 #: kitty window. In particular you can use new_os_window_with_cwd to
 #: open a window with the current working directory.
 
 map kitty_mod+F4 launch --cwd=current --location=hsplit
-map kitty_mod+F5 detach_window   # this is voice over in mac
+map kitty_mod+F5 detach_window
 # map kitty_mod+F6 launch --cwd=current --location=vsplit
 map kitty_mod+F7 launch --cwd=current --location=vsplit
 # map kitty_mod+F8 detach_tab
@@ -317,18 +317,16 @@ map kitty_mod+ctrl+down neighboring_window down
 # map kitty_mod+w close_window
 map kitty_mod+] next_window
 map kitty_mod+[ previous_window
-# map kitty_mod+ctrl+] next_window
-# map kitty_mod+ctrl+[ previous_window
 #map kitty_mod+f move_window_forward
 #map kitty_mod+b move_window_backward
 #map kitty_mod+` move_window_to_top
 map kitty_mod+r start_resizing_window
-map kitty_mod+1 first_window
-map kitty_mod+2 second_window
-map kitty_mod+3 third_window
-map kitty_mod+4 fourth_window
-map kitty_mod+5 fifth_window
-map kitty_mod+6 sixth_window
+#map kitty_mod+1 first_window
+#map kitty_mod+2 second_window
+#map kitty_mod+3 third_window
+#map kitty_mod+4 fourth_window
+#map kitty_mod+5 fifth_window
+#map kitty_mod+6 sixth_window
 #map kitty_mod+7 seventh_window
 #map kitty_mod+8 eighth_window
 #map kitty_mod+9 ninth_window
@@ -340,8 +338,8 @@ map kitty_mod+6 sixth_window
 map kitty_mod+right next_tab
 map kitty_mod+left  previous_tab
 #linux/KDE
-# map kitty_mod+ctrl+right next_tab
-# map kitty_mod+ctrl+left  previous_tab
+map kitty_mod+ctrl+right next_tab
+map kitty_mod+ctrl+left  previous_tab
 map kitty_mod+t     new_tab_with_cwd
 map kitty_mod+q     close_tab
 map kitty_mod+.     move_tab_forward
@@ -479,17 +477,11 @@ map kitty_mod+ctrl+f3     remove_marker
 # map kitty_mod+s send_text application \x1b:w\n
 map kitty_mod+s send_text all :execute "normal \<d-s>"\r
 map kitty_mod+p send_text all :execute "normal \<d-p>"\r
-map kitty_mod+f send_text all :execute "normal \<d-f>"\r
 map kitty_mod+w send_text all :execute "normal \<d-w>"\r
-# map kitty_mod+f send_text application \x85\x29
-# kitty +kitten show_keys
-# map kitty_mod+f send_text all  \x1bf
-map kitty_mod+shift+f send_text all  \x1bF
+map kitty_mod+f send_text all :execute "normal \<d-f>"\r
 map kitty_mod+shift+p send_text all :execute "normal \<d-P>"\r
-# map kitty_mod+shift+f send_text all :execute "normal \d-F>"\r
-# rmal \<d-T>""
+map kitty_mod+shift+f send_text all :execute "normal \<d-F>"\r
 map kitty_mod+shift+t send_text all :execute "normal \<d-T>"\r
-## https://www.quickmacros.com/help/Tables/IDP_VIRTUALKEYS.html
 # map kitty_mod+/ send_text application \x80\xfc\x80\/
 map kitty_mod+/ send_text application \\c\x20
 # map kitty_mod+/ send_text application gcc
@@ -600,9 +592,7 @@ map alt+right send_text all \x1b\x66
 #
 # For example:
 #
-# symbol_map U+E008,U+E5F6-U+E630,U+E700-U+E740,U+E770-U+E7B0,U+EAB4,U+F4A5,U+E0A0-U+E0A2,U+E0B0-U+E0A0,U+E22C,U+E5F0-U+E5FF,U+E612-U+E627,U+E725,U+E77F-U+E786,U+E799-U+E7A1,U+EB61-U+EBD0,U+F2A0-U+F310,U+F43D-U+F449,U+F460-U+F500,U+F480-U+F4C0 Symbols Nerd Font Mono
-# U+E633,U+E786,U+EAB6,U+F449,U+F47C
-symbol_map U+E008,U+E22C,U+E257,U+E5F0-U+E640,U+E6B0-U+E6BF,U+E702-U+E736,U+E770-U+E7A2,U+EA70,U+EAB0-U+EADD,U+EAE0-U+EAEF,U+EB36,U+EB5F,U+EB30-U+EB90,U+EBC4-U+EBDE,U+EDF0-U+EDF5,U+F120-U+F1BB,U+F270-U+F286,U+F2A6,U+F30C,U+F42E,U+F43F-U+F48A,U+F4A5,U+F4B5,U+F4F0 Symbols Nerd Font Mono
+#symbol_map U+E0A0-U+E0A2,U+E0B0-U+E0B3 PowerlineSymbols
 hide_window_decorations no
 # enable <m-key> in vim
 macos_option_as_alt yes
@@ -613,10 +603,10 @@ macos_option_as_alt yes
 # as #12af59 or "red".
 # macos_titlebar_color background
 
-allow_remote_control socket
+allow_remote_control yes
 # xterm-new
-listen_on unix:/tmp/mykitty
-# listen_on  unix:@mykitty
+# listen_on unix:/tmp/mykitty
+listen_on  unix:@mykitty
 # infocmp -x
 # kf13-kf24 are shift F1-F12
 # shift + fn mapped to  KF13 ~ KF24
@@ -648,8 +638,8 @@ map kitty_mod+,   load_config_file
 
 #: Debug kitty configuration
 
-map kitty_mod+f6 debug_config
-map opt+cmd+f6    debug_config
+# map kitty_mod+f6 debug_config
+# map opt+cmd+,    debug_config
 
 #::  Show details about exactly what configuration kitty is running
 #::  with and its host environment. Useful for debugging issues.
@@ -690,17 +680,7 @@ map opt+cmd+f6    debug_config
 # enabled_layouts tall:bias=70;full_size=2
 
 
-# kitten
-action_alias kitty_scrollback_nvim kitten ~/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py --nvim-args --clean --noplugin -n
-map kitty_mod+h kitty_scrollback_nvim
-map kitty_mod+g kitty_scrollback_nvim --config ksb_builtin_last_cmd_output
-# Show clicked command output in nvim
-mouse_map ctrl+shift+right press ungrabbed combine : mouse_select_command_output : kitty_scrollback_nvim --config ksb_builtin_last_visited_cmd_output
-map kitty_mod+shift+/      launch --allow-remote-control kitty +kitten kitty_search/search.py @active-kitty-window-id
-# map kitty_mod+ctrl+/      launch --location=hsplit --allow-remote-control kitty +kitten search.py @active-kitty-window-id
-
 # BEGIN_KITTY_THEME
-# Material
+# 3024 Night
 include current-theme.conf
-shell_integration enable
 # END_KITTY_THEME
